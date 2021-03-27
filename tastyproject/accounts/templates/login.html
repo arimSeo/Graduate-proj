@@ -1,0 +1,47 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+</head>
+
+<body>
+    <form action="{% url 'index' %}" method="POST">
+        <h1>LOGIN</h1>
+        {% csrf_token %}
+        <div class="idid">
+            <label for="email" class="labelEmail">
+                <span class="contentEmail">E-mail</span>
+            </label>
+            <input type="text" id='email' name="user" autocomplete="off" placeholder="아이디 입력" required>
+            <br />
+        </div>
+        <div class="pw">
+            <label for="pass" class="labelPass">
+                <span class="contentPass">password</span>
+            </label>
+            <input type="password" id='pass' name='password1' placeholder="비밀번호" required>
+        </div>
+        <input type="submit" class="login_btn" value="앱으로 LOGIN">
+        <!-- 버튼 image로 바꾸기 -->
+
+
+    </form>
+    <!-- <form action="{% provider_login_url 'kakao' method='oauth2' %}" method="GET">
+        <input type="submit" value="카카오로그인" />
+    </form> -->
+
+    <a href="{% provider_login_url 'kakao' method='oauth2' %}">
+        <img src="{% static 'image/kakao_login_large_narrow.png' %}" class="kakao_btn">
+    </a>
+    <p>아직 회원이 아니신가요? <a href="{% url 'register' %}">회원가입 하기</a></p>
+    <!-- 회원가입 -->
+</body>
+
+</html>

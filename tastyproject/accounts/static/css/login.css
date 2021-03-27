@@ -1,0 +1,37 @@
+body{
+    margin-top: 5%;
+    text-align: center;
+}
+.kakao_btn{
+    width:15%;
+    /* height:6%; */
+    /* border-radius: 12px; */
+}
+.login_btn{
+    /* image로 바꿀것! 카카오btn이랑 똑같이 적용 */
+    margin:0 0 1% 0;
+    padding: 1% 0% 1% 0%;
+    width:15%;
+    border:0;
+    border-radius: 8px;
+}
+
+.idid{
+    margin:4% 0 1% 0;
+}
+.pw{
+    margin:0 0 4% 0;
+}
+
+.labelEmail{
+    margin-left:2%;
+    /* margin-bottom:2%; */
+}
+.labelPass{
+    margin-right:2%;
+    margin-bottom:2%;
+}
+
+#email{
+    margin-left: 2%;
+}
