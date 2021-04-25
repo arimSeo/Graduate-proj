@@ -15,6 +15,7 @@ def register(request):
 
 def kakaoLogin(request):
     _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
+
     _redirectUrl = 'http://127.0.0.1:8000/'
     _url = f'https://kauth.kakao.com/oauth/authorize?client_id={_restApiKey}&redirect_uri={_redirectUrl}&response_type=code'
     return redirect(_url)
@@ -22,6 +23,7 @@ def kakaoLogin(request):
 def kakaoLoginRedirect(request):
     _qs = request.GET['code']
     _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
+   
     _redirect_uri = 'http://127.0.0.1:8000/'
     _url = f'https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={_restApiKey}&redirect_uri={_redirect_uri}&code={_qs}'
     _res = requests.post(_url)

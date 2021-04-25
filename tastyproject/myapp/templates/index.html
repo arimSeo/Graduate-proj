@@ -6,10 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-    <!-- js타이핑 -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script> <!-- js타이핑 -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <!-- <script src="{% static 'js/result.js' %}"></script> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <title>TASTY</title>
 </head>
@@ -20,24 +18,28 @@
     <div class="title">
         Tasty<br>
     </div>
-    <span class="text" id="type1">
-        내 주머니 속 맛집 메이트🍴
-    </span>
-
-    <img class="logo" src="{% static 'image/logo.png' %}" width="35px" height="35px">
+    <div class="text" id="typed1">
+        <!-- 내 주머니 속 맛집 메이트🍴 -->
+    </div>
     <div class="team">맛있는 친구들</div>
-    <!-- <script>
-        // setTimeout(function () {
-        //    location.replace("{% url 'login' %}");
-        //}, 4000)
 
-        new Typed('#type1', {
-            strings: ["내 주머니 속 맛집 메이트🍴"],
+
+    <script>
+        setTimeout(function () {
+            location.replace("{% url 'login' %}");
+        }, 4500)
+
+        new Typed('#typed1', {
+            strings: ["", "내 주머니 속 맛집 메이트🍴"],
             typeSpeed: 100,
+            //backSpeed: 100,
             fadeOut: false,
-            loop: false
+            loop: false,
+            cursorChar: '_',
+            backDelay: 500,
+            startDelay: 1000,
         });
-    </script> -->
+    </script>
 </body>
 
 </html>

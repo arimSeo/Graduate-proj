@@ -1,16 +1,15 @@
 
 body{
     text-align: center;
-    /* position: relative; */
 }
 .logo1{
     margin-top: 10%;
     display: static;
 }
 
-/* #type1{
-    position: absolute;
-} */
+#typed1{
+    display: inline-block;
+}
 
 @keyframes bush{
     0%{
@@ -36,13 +35,15 @@ body{
     font-size:1rem;
     display:block;
 }
-.logo{
+/* .logo{
     margin-top: 20%;
-    display:static;
-}
+    display:block;
+} */
 
 .team{
-    display: inline-block;
+    margin-top:18%;
+    display:block;
+    /* display: inline-block; */
     font-family: Zilla Slab;
     font-weight: border;
     font-size: 0.8rem;
@@ -70,12 +71,13 @@ body{
         margin:0 0 4% 0 ;
     }
 
-    .logo{
-        /* margin: 90% 0 -7% 25%; */
+    /* .logo{
         margin-top:45%;
         margin-bottom: -3%;
+    } */
+
+    .team{
+        margin-top:75%;
     }
-
-
     
 }

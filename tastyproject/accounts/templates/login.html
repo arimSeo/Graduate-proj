@@ -8,12 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <title>Login</title>
 </head>
 
 <body>
     <form action="{% url 'index' %}" method="POST">
-        <h1>LOGIN</h1>
+        <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
+        <div class="h1">LOGIN</div>
         {% csrf_token %}
         <div class="idid">
             <label for="email" class="labelEmail">
@@ -40,8 +42,8 @@
     <a href="{% provider_login_url 'kakao' method='oauth2' %}">
         <img src="{% static 'image/kakao_login_large_narrow.png' %}" class="kakao_btn">
     </a>
-    <p>아직 회원이 아니신가요? <a href="{% url 'register' %}">회원가입 하기</a></p>
-    <!-- 회원가입 -->
+    <p><span class="regi0">아직 회원이 아니신가요?&nbsp;</span> <a href="{% url 'register' %}" class="regi">회원가입 하기</a></p>
+
 </body>
 
 </html>
