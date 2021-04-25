@@ -1,0 +1,81 @@
+
+body{
+    text-align: center;
+    /* position: relative; */
+}
+.logo1{
+    margin-top: 10%;
+    display: static;
+}
+
+/* #type1{
+    position: absolute;
+} */
+
+@keyframes bush{
+    0%{
+    transform :scale(0);
+    }
+    100%{
+    transform : scale(1);
+    }
+}
+
+.title{
+    color:#ED7D31;
+    font-size: 5rem;
+    margin:-5% 0 2% 0 ;
+    font-weight:500;
+    font-family: Ubuntu Mono;
+    animation: bush 3s forwards;
+    text-shadow:  -1px 0 black, 0 1px black, 1 0px black, 0 -1px black;
+}
+
+.text{
+    color:gray;
+    font-size:1rem;
+    display:block;
+}
+.logo{
+    margin-top: 20%;
+    display:static;
+}
+
+.team{
+    display: inline-block;
+    font-family: Zilla Slab;
+    font-weight: border;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #ED7D31;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+
+/* 반응형*/
+@media ( max-width: 900px ) {
+    .logo1{
+        margin-top: 40%;
+        margin-bottom:-12%;
+        /* position: relative; */
+ 
+    }
+    .title{
+        color:#ED7D31;
+        font-size: 4.5rem;
+        margin:0 0 4% 0 ;
+    }
+
+    .logo{
+        /* margin: 90% 0 -7% 25%; */
+        margin-top:45%;
+        margin-bottom: -3%;
+    }
+
+
+    
+}

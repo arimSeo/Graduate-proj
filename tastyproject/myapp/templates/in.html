@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+
+<body>
+  컨텐츠 기반 필터링과 감성분석을 이용한 데이터기반 식당메뉴 개인화 추천 서비스
+  {% if check %}
+  <div>
+    <form action="kakaoLogout/" method="GET">
+      <input type="submit" value="카카오로그아웃" />
+    </form>
+  </div>
+  {% else %}
+
+  <div>
+    <h1>카카오 로그인</h1>
+    <form action="{% url 'login' %}" method="GET">
+      <input type="submit" value="카카오로그인" />
+    </form>
+  </div>
+  {% endif %}
+</body>
+
+<script>
+
+  var ws = new WebSocket('ws://127.0.0.1:8000');
+  ws.onopen = (event) => {
+    let sendData = { event: 'open' }
+    ws.send(JSON.stringify(sendData));
+  }
+  ws.onmessage = (event) => {
+    let recData = JSON.parse(event.data);
+    switch (recData.event) {
+      case 'response':
+        console.log(recData.data);
+        break;
+    }
+  }
+
+  function myOnClick() {
+    let sendData = {
+      event: 'request',
+      data: 'some data...'
+    };
+    ws.send(JSON.stringify(sendData));
+  }
+</script>
+
+</html>

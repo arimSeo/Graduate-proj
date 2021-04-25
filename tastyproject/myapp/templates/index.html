@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,51 +6,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <!-- js타이핑 -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- <script src="{% static 'js/result.js' %}"></script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <title>TASTY</title>
 </head>
 
 <body>
-    컨텐츠 기반 필터링과 감성분석을 이용한 데이터기반 식당메뉴 개인화 추천 서비스
-    {% if check %}
-    <div>
-        <form action="kakaoLogout/" method="GET">
-            <input type="submit" value="카카오로그아웃" />
-        </form>
+    <img class="logo1 " src="{% static 'image/logo1.png' %}" width="230px" height="100px">
+    <!-- <input type="button" value="시작하기"> -->
+    <div class="title">
+        Tasty<br>
     </div>
-    {% else %}
+    <span class="text" id="type1">
+        내 주머니 속 맛집 메이트🍴
+    </span>
 
-    <div>
-        <h1>카카오 로그인</h1>
-        <form action="{% url 'login' %}" method="GET">
-        <input type="submit" value="카카오로그인" />
-        </form>
-    </div> 
-    {% endif %}
+    <img class="logo" src="{% static 'image/logo.png' %}" width="35px" height="35px">
+    <div class="team">맛있는 친구들</div>
+    <!-- <script>
+        // setTimeout(function () {
+        //    location.replace("{% url 'login' %}");
+        //}, 4000)
+
+        new Typed('#type1', {
+            strings: ["내 주머니 속 맛집 메이트🍴"],
+            typeSpeed: 100,
+            fadeOut: false,
+            loop: false
+        });
+    </script> -->
 </body>
-
-<script>
-
-var ws = new WebSocket('ws://127.0.0.1:8000');
-ws.onopen = (event) => {
-  let sendData = { event: 'open' }
-  ws.send(JSON.stringify(sendData));
-}
-ws.onmessage = (event) => {
-  let recData = JSON.parse(event.data);
-  switch (recData.event) {
-    case 'response':
-      console.log(recData.data);
-      break;
-  }
-}
-  
-function myOnClick() {
-  let sendData = {
-    event: 'request',
-    data: 'some data...'
-  };
-  ws.send(JSON.stringify(sendData));
-}
-</script>
 
 </html>
