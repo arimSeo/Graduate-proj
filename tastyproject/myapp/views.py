@@ -6,3 +6,9 @@ def index(request):
     if request.session.get('access_token'):
         _context['check'] = True
     return render(request, 'index.html', _context)
+
+def gamseong(request):
+    return render(request,'gamseong.html')
+
+def main(request):
+    return render(request,'main.html')
