@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <form action="{% url 'index' %}" method="POST">
+    <form action="{% url 'gamseong' %}" method="POST">
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">LOGIN</div>
         {% csrf_token %}
@@ -21,14 +21,14 @@
             <label for="email" class="labelEmail">
                 <span class="contentEmail">E-mail</span>
             </label>
-            <input type="text" id='email' name="user" autocomplete="off" placeholder="아이디 입력" required>
+            <input type="text" id='email' name="username" autocomplete="off" placeholder="아이디 입력" required>
             <br />
         </div>
         <div class="pw">
             <label for="pass" class="labelPass">
                 <span class="contentPass">password</span>
             </label>
-            <input type="password" id='pass' name='password' placeholder="비밀번호" required>
+            <input type="password" id='pass' name='password1' placeholder="비밀번호" required>
         </div>
         <input type="image" src="{% static 'image/Group 5.png' %}" class="login_btn">
         <!-- 버튼 image로 바꾸기 -->

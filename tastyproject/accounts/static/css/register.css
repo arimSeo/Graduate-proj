@@ -10,6 +10,38 @@ body{
     font-size: 4.6rem;
 }
 
+.idid{
+    margin:4% 0 1.5% 0;
+    color:#ED7D31;
+}
+.pw{
+    margin:0 0 3% 0;
+    color:#ED7D31;
+}
+
+
+
+#email{
+    margin-left: 2%;
+    border-bottom:0px static #ED7D31;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+#pass{
+    margin-left: 2%;
+    border-bottom:0px static #ED7D31;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.regi_btn{
+    margin:0 0 0.5% 0;
+    width:17%;
+}
+
+
 @media(max-width:900px){
     body{
         margin-top: 40%;
