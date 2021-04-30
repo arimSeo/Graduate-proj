@@ -24,11 +24,23 @@
             <input type="text" id="email" name="username" autocomplete="off" required>
         </div>
 
-        <div class="pw">
+        <div class="pw1">
             <label for="pass" class="labelPass">
                 <span>PW</span>
             </label>
             <input type="password" id="pass" name="password1" required>
+        </div>
+        <div class="pw2">
+            <label for="pass" class="labelPass">
+                <span>PW 확인</span>
+            </label>
+            <input type="password" id="pass" name="password2" required>
+        </div>
+        <div class="check">
+            <input type="checkbox" id="check" class="labelCheck">
+            <label for="check" class="labelPass">
+                <span>개인정보수집 동의</span>
+            </label>
         </div>
 
         <input type="image" src="{% static 'image/Group 3.png' %}" class="regi_btn">

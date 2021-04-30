@@ -28,18 +28,24 @@ body{
     margin-bottom:2%;
 }
 
+input::placeholder{
+    color: #f1cfb7ef;
+}
+/* input box 클릭시 */
+input:focus{
+    outline:none;
+}
+
+#email, #pass, #check{
+    border-top:0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1.4px solid #f88e47;
+    background:transparent;
+}
+
 #email{
     margin-left: 2%;
-    border-bottom:0px static #ED7D31;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
-#pass{
-    border-bottom:0px static #ED7D31;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
 }
 
 .login_btn{

@@ -14,12 +14,26 @@ body{
     margin:4% 0 1.5% 0;
     color:#ED7D31;
 }
-.pw{
+.pw1{
+    margin:0 0 1.5% 0;
+    color:#ED7D31;
+}
+.pw2{
     margin:0 0 3% 0;
     color:#ED7D31;
 }
 
+input:focus{
+    outline:none;
+}
 
+#email, #pass, #check{
+    border-top:0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1.4px solid #f88e47;
+    background:transparent;
+}
 
 #email{
     margin-left: 2%;
@@ -37,7 +51,7 @@ body{
 }
 
 .regi_btn{
-    margin:0 0 0.5% 0;
+    margin:4% 0 0.5% 0;
     width:17%;
 }
 
@@ -45,6 +59,22 @@ body{
 @media(max-width:900px){
     body{
         margin-top: 40%;
+    }
+    .idid{
+        margin:12% 0 5% 0;
+    }
+    .pw2{
+        margin-top:5%;
+        margin-bottom: 11%;
+    }
+/*     
+    .labelEmail{
+        margin-left:6%;
+    } */
+
+    .regi_btn{
+        margin:8% 0 0.5% 0;
+        width:45%;
     }
 
 }
