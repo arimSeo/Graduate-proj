@@ -7,19 +7,32 @@ from django.http import HttpResponse, JsonResponse
 # from tastyproject.settings import KAKAO_KEY
 # import main_domain
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserCheck, RegiUser
-from .forms import CheckForm
+from .models import UserCheck
+from .forms import CheckForm, UserForm
 # from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 
 def login(request):
     return render(request, 'login.html')
 
 def register(request):
-    register_form=UserCreationForm()   #유저생성폼을 만든다
-    check_form= CheckForm() 
-    return render(request,'registration/register.html')
+    # register_form=UserCreationForm()   #유저생성폼을 만든다
+    check_form= CheckForm()
+
+    if request.method=="Post":
+        form= UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data.get('usernam')
+            raw_password= form.cleaned_data.get('password1')
+            user= authenticate(username=username, password=raw_password)
+            login(request,user)
+            return redirect('gamseong')
+    else:
+        form=UserForm()
+    return render(request,'registration/register.html',{'form':form})
 
 def kakaoLogin(request):
     _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요

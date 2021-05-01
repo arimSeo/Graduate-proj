@@ -10,16 +10,3 @@ class UserCheck(models.Model):
     # ForeignKey의 역참조는 QuerySet 을 반환
     # 1명의 유저는 하나의 프로필만을 가져야 한다고 강제한다면, one-to-one을 사용할 수 있다.
     ispermit= models.BooleanField('',default=False)  #정보수집 동의체크
-
-# #RegiProfile부분 참고
-class RegiUser(models.Model):
-    M_or_F=(
-        ('남자','남자'),
-        ('여자','여자'),
-        ('중성','중성'),
-    )
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #회원가입 내용에 첨부하고 싶은거
-    gender= models.CharField(choices=M_or_F, max_length=2, null=True)   #null=False로???
-    birth= models.DateField(null=True)
-
