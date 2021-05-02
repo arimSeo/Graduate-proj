@@ -2,7 +2,7 @@ from django.urls import path
 from .views import login, register, kakaoLoginRedirect, kakaoLogin, kakaoLogout,kakaoLoginRedirect
 from django.contrib.auth import views as auth_views  #auth_views라고 이름->장고에 있는 기존 LoginView이용함
 
-# app_name='accounts'
+app_name='accounts'
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view() , name="login"),   

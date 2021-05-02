@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'accounts:register' %}" method="POST">
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">Sign-Up</div>
         {% csrf_token %}
@@ -39,7 +39,7 @@
             <input type="password" id="pass" name="password2" value="{{ form.password2.value|default_if_none:'' }}"
                 required>
         </div>
-        <div class="mf">
+        <!-- <div class="mf">
             <span>성별</span>
             <label for="gender" class="labelGender">
                 <input type="radio" id="gender" name="여자" value="남자">남자
@@ -50,26 +50,25 @@
 
         </div>
 
+       -->
+        <div>
+            <span>성별</span>
+            {{user_form.gender}}
+        </div>
         <div class="day">
             <label for="birth" class="labelBirth">
                 <span>생일</span>
             </label>
-            <input type="date" id="birth" required>
+            <input type="date" id="birth" name="birthday" required>
         </div>
 
-        <!-- <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email"
-                   value="{{ form.email.value|default_if_none:'' }}">
-        </div> -->
 
         <div class="check">
-            <input type="checkbox" id="check" class="labelCheck">
-            <label for="check" class="labelPass">
+            <input type="checkbox" id="check" name="ispermit" class="labelCheck" required>
+            <label for="check" class="labelCheck">
                 <span>개인정보수집 동의</span>
             </label>
         </div>
-
         <input type="image" src="{% static 'image/Group 3.png' %}" class="regi_btn">
     </form>
 </body>

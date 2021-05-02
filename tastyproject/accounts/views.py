@@ -7,33 +7,38 @@ from django.http import HttpResponse, JsonResponse
 # from tastyproject.settings import KAKAO_KEY
 # import main_domain
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserCheck
-from .forms import CheckForm, UserForm
-# from django.contrib.auth import login as auth_login
+from .models import MyUser
 from django.contrib.auth.models import User
+from django.contrib import auth
 from django.contrib.auth import authenticate, login
 
 
-def login(request):
-    return render(request, 'login.html')
-
 def register(request):
     # register_form=UserCreationForm()   #유저생성폼을 만든다
-    check_form= CheckForm()
-
-    if request.method=="Post":
-        form= UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username=form.cleaned_data.get('usernam')
-            raw_password= form.cleaned_data.get('password1')
-            user= authenticate(username=username, password=raw_password)
-            login(request,user)
+    # my_user=MyUser.objects.get(user=request.user)
+    # user_form=UserCreationForm(instance=my_user)
+    #추가할것!
+    #성별 폼 띄우기
+    #비번 일치안하면 오류 띄우기
+    if request.method=="POST":
+        if request.POST["password1"] == request.POST["password2"]:
+            user = User.objects.create_user(
+                username=request.POST["username"],
+                password=request.POST["password1"])
+            profile = MyUser(
+                user=user,
+                name=request.POST["username"],
+                birth=request.POST["birthday"],
+                permit=request.POST.get('ispermit', '') == 'on')
+            profile.save()
             return redirect('gamseong')
     else:
-        form=UserForm()
-    return render(request,'registration/register.html',{'form':form})
+        return render(request,'registration/register.html')
+        # return render(request,'registration/register.html',{'user_form':user_form,'my_user':my_user})
 
+
+###
+#소셜로그인
 def kakaoLogin(request):
     _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
 

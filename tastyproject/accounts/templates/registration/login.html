@@ -13,22 +13,37 @@
 </head>
 
 <body>
-    <form action="{% url 'gamseong' %}" method="POST">
+    <form action="{% url 'accounts:login' %}" method="POST">
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">LOGIN</div>
         {% csrf_token %}
+        {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}  <!-- 필드 오류를 출력한다. -->
+            <div class="alert alert-danger">
+                <strong>{{ field.label }}</strong>
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}   <!-- 넌필드 오류를 출력한다. -->
+        <div class="alert alert-danger">
+            <strong>{{ error }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
         <div class="idid">
             <label for="email" class="labelEmail">
                 <span class="contentEmail">E-mail</span>
             </label>
-            <input type="text" id='email' name="username" autocomplete="off" placeholder="아이디 입력" required>
+            <input type="text" id='email' name="username" autocomplete="off" placeholder="아이디 입력" value="{{ form.username.value|default_if_none:'' }}" required>
             <br />
         </div>
         <div class="pw">
             <label for="pass" class="labelPass">
                 <span class="contentPass">password</span>
             </label>
-            <input type="password" id='pass' name='password1' placeholder="비밀번호" required>
+            <input type="password" id='pass' name='password' placeholder="비밀번호" value="{{ form.password.value|default_if_none:'' }}" required>
         </div>
         <input type="image" src="{% static 'image/Group 5.png' %}" class="login_btn">
         <!-- 버튼 image로 바꾸기 -->
@@ -41,8 +56,8 @@
     <a href="{% provider_login_url 'kakao' method='oauth2' %}">
         <img src="{% static 'image/Group 6.png' %}" class="kakao_btn">
     </a>
-    <p><span class="regi0">아직 회원이 아니신가요?&nbsp;</span> <a href="{% url 'register' %}" class="regi">회원가입 하기</a></p>
-
+    <p><span class="regi0">아직 회원이 아니신가요?&nbsp;</span> <a href="{% url 'accounts:register' %}" class="regi">회원가입 하기</a></p>
+<script src="{% static 'bootstrap.min.js' %}"></script>
 </body>
 
 </html>
