@@ -33,10 +33,10 @@
                 required>
         </div>
         <div class="pw2">
-            <label for="pass" class="labelPass">
+            <label for="pass2" class="labelPass">
                 <span>PW 확인</span>
             </label>
-            <input type="password" id="pass" name="password2" value="{{ form.password2.value|default_if_none:'' }}"
+            <input type="password" id="pass2" name="password2" value="{{ form.password2.value|default_if_none:'' }}"
                 required>
         </div>
         <!-- <div class="mf">
@@ -51,23 +51,35 @@
         </div>
 
        -->
-        <div>
+        <!-- <div>
             <span>성별</span>
             {{user_form.gender}}
-        </div>
+        </div> -->
+        <!-- <div>
+            <label for="gender" class="labelGender">
+                <span>성별</span>
+            </label>
+            <select>
+                <option value="남자">남자</option>
+                <option value="여자">여자</option>
+                <option value="중성">중성</option>
+            </select>
+        </div> -->
+
         <div class="day">
             <label for="birth" class="labelBirth">
                 <span>생일</span>
             </label>
-            <input type="date" id="birth" name="birthday" required>
+            <input type="date" id="birth" name="birthday" placeholder="생년월일" autocomplete="off" required>
         </div>
 
 
         <div class="check">
-            <input type="checkbox" id="check" name="ispermit" class="labelCheck" required>
+            <input type="checkbox" id="check" name="ispermit" autocomplete="off" required>
             <label for="check" class="labelCheck">
-                <span>개인정보수집 동의</span>
+
             </label>
+            <p class="permit">개인정보수집 동의</p>
         </div>
         <input type="image" src="{% static 'image/Group 3.png' %}" class="regi_btn">
     </form>

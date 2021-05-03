@@ -15,13 +15,17 @@ from django.contrib.auth import authenticate, login
 
 def register(request):
     # register_form=UserCreationForm()   #유저생성폼을 만든다
-    # my_user=MyUser.objects.get(user=request.user)
-    # user_form=UserCreationForm(instance=my_user)
+    # my_user=User.objects.get(user=request.user)
+    # user_form=MyUser(instance=my_user)
     #추가할것!
     #성별 폼 띄우기
-    #비번 일치안하면 오류 띄우기
+    #비번 일치안하면 오류 띄우기 -예외처리
+    #아이디 같은거 있음 오류뜸-예외처리
     if request.method=="POST":
         if request.POST["password1"] == request.POST["password2"]:
+            # username = request.POST['username']
+            # password = request.POST['password1']
+            # try:
             user = User.objects.create_user(
                 username=request.POST["username"],
                 password=request.POST["password1"])
@@ -32,6 +36,16 @@ def register(request):
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save()
             return redirect('gamseong')
+                # user = User(username=username)
+                # user.set_password(password)
+                # user.save()
+                
+                # login(request,user)
+                # return redirect('gamseong')
+            # except:
+            #     message = '존재하는 아이디입니다.'
+            #     context['message'] = message      #context정의안됬다고 에러뜸
+            #     return redirect('register')
     else:
         return render(request,'registration/register.html')
         # return render(request,'registration/register.html',{'user_form':user_form,'my_user':my_user})

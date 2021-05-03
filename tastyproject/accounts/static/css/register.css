@@ -19,7 +19,7 @@ body{
     color:#ED7D31;
 }
 .pw2{
-    margin:0 0 3% 0;
+    margin:0 0 1.5% 0;
     color:#ED7D31;
 }
 
@@ -27,28 +27,68 @@ input:focus{
     outline:none;
 }
 
-#email, #pass, #check{
+#email, #pass, #pass2, #birth{
     border-top:0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1.4px solid #f88e47;
+    border-bottom: 1.4px solid #ED7D31;
     background:transparent;
 }
 
-#email{
-    margin-left: 2%;
-    border-bottom:0px static #ED7D31;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+#email, #pass, #birth{
+    margin-left: 3%;
 }
-#pass{
-    margin-left: 2%;
-    border-bottom:0px static #ED7D31;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+#pass2{
+    margin-left: 1%;
 }
+#birth{
+    width:160px;
+}
+
+.day{
+    margin:0 0 2% 0;
+    color:#ED7D31;
+}
+
+
+   /* input[type=date]::-webkit-datetime-edit-text { 
+       -webkit-appearance: none;
+        display: none; } 
+   input[type=date]::-webkit-datetime-edit-month-field{ 
+       -webkit-appearance: none; 
+    display: none; 
+} 
+    input[type=date]::-webkit-datetime-edit-day-field { 
+        -webkit-appearance: none; 
+        display: none; 
+    } 
+        input[type=date]::-webkit-datetime-edit-year-field {
+             -webkit-appearance: none; 
+            display: none; 
+        } */
+input[id="check"] + label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid #b8a293;
+    cursor: pointer;
+}
+input[id="check"]:checked + label {
+    background-color: #b8a293;
+}
+input[id="check"] {
+    display: none;
+    margin-top:1%;
+}
+.permit{
+    margin:-1.65% 0 0 12%;
+}
+.check{
+    margin:0 0 0 0%;
+    color:#b8a293;
+    font-size: 14px;
+}
+
 
 .regi_btn{
     margin:4% 0 0.5% 0;
@@ -65,12 +105,18 @@ input:focus{
     }
     .pw2{
         margin-top:5%;
-        margin-bottom: 11%;
+        margin-bottom: 5%;
     }
-/*     
-    .labelEmail{
-        margin-left:6%;
-    } */
+
+    .permit{
+        margin:-5.6% 0 0 38%;
+    }
+    .labelCheck{
+        margin-top: 4%;
+    }
+    .check{
+        margin-bottom: 4%;
+    }
 
     .regi_btn{
         margin:8% 0 0.5% 0;
