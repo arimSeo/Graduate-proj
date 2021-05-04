@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +6,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/gamseong.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
     <title>오늘의 감성은?</title>
 </head>
 
 <body>
-    감성 선택 페이지
+    <form action="{% url 'main' %}" method="POST">
+        {% csrf_token %}
+        <div class="h1">오늘의 감성은? Today's Mood</div>
+        <br>
+        1. 느낌으로 선택하기
+        <h2>느낌이 ______ 가게</h2>
+        <div class="">
+            아기자기한
+        </div>
+        <div class="">
+            힙한
+        </div>
+        <br>
+        2. 기분으로 선택하기
+        <h2>기분이 _____ 날</h2>
+        <div class="">
+            울적한
+        </div>
+        <div class="">
+            화나는
+        </div>
+
+        <input type="submit" value="완료">
+    </form>
+
 </body>
 
 </html>
