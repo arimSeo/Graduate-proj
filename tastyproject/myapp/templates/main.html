@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +6,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <title>추천추천</title>
 </head>
 
 <body>
-    여기가 추천 메인페이지
+    <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
+    <div class="h1">당신의 감성맞춤 맛집</div>
 
-    카테고리별로 /   식당|카페|술집  -처음 세개 랜덤
+    카테고리별로 / 식당|카페|술집 -처음 세개 랜덤
+
+    <div class="box1">식당 박스</div>
+    <div class="box2">카페 박스</div>
+    <div class="box3">술집 박스</div>
 
 </body>
 

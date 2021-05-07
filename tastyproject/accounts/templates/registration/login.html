@@ -45,7 +45,7 @@
             </label>
             <input type="password" id='pass' name='password' placeholder="비밀번호" value="{{ form.password.value|default_if_none:'' }}" required>
         </div>
-        <input type="image" src="{% static 'image/Group 5.png' %}" class="login_btn">
+        <input type="image" src="{% static 'image/Group 5.png' pk=user.pk %}" class="login_btn">
         <!-- 버튼 image로 바꾸기 -->
 
     </form>
@@ -57,7 +57,7 @@
         <img src="{% static 'image/Group 6.png' %}" class="kakao_btn">
     </a>
     <p><span class="regi0">아직 회원이 아니신가요?&nbsp;</span> <a href="{% url 'accounts:register' %}" class="regi">회원가입 하기</a></p>
-<script src="{% static 'bootstrap.min.js' %}"></script>
+
 </body>
 
 </html>

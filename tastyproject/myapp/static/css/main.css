@@ -1,0 +1,20 @@
+body{
+    margin-top: 7%;
+    text-align: center;
+    background-color: #FFF8ED;
+}
+.h1{
+    font-family: Ubuntu Mono;
+    color:#ED7D31;
+    font-size: 4.2rem;
+}
+
+
+
+
+
+@media(max-width:900px){
+    body{
+        margin-top: 40%;
+    }
+}
