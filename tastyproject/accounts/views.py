@@ -11,6 +11,7 @@ from .models import MyUser
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
+# from .forms import RegisterForm
 
 
 def register(request):
@@ -36,6 +37,7 @@ def register(request):
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save()
             return redirect('gamseong')
+        
                 # user = User(username=username)
                 # user.set_password(password)
                 # user.save()
@@ -47,6 +49,7 @@ def register(request):
             #     context['message'] = message      #context정의안됬다고 에러뜸
             #     return redirect('register')
     else:
+        # regi_form= RegisterForm()
         return render(request,'registration/register.html')
         # return render(request,'registration/register.html',{'user_form':user_form,'my_user':my_user})
 

@@ -8,41 +8,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/gamseong.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{% static 'gamseong.js' %}"></script>
     <title>오늘의 감성은?</title>
 </head>
 
 <body>
+    <div class="loading">
+        <img src="{% static 'image/loading592.gif' %}" alt="loading" class="loading_img">
+        <div class="loading_content">오늘 갬성 끌어올리는 중...</div>
+    </div>
     <!-- form 한개에 submit 한개로하면 버튼 각각에 다 폼으로 해야하나????
     아아ㅏ아니다 중복 아니니까 하나니까 다 submit 해도되나. 근데 pnu퀴즈는 각각에 다해줬는데,,  -->
     <!-- 옵션을 줘서 각 해당 추천모델폼 연결 -->
     <!-- {{myuser.username}}님 -->
-    <form action="{% url 'main' %}" method="POST">
-        {% csrf_token %}
-        <div class="h1">오늘의 감성은? Today's Mood</div>
-        <br>
-        1. 느낌으로 선택하기- 가게의 느낌으로 선택
-        <h2>느낌이 ______ 가게</h2>
-        <div class="">
-            <input type="submit" value="아기자기한">
-        </div>
-        <div class="">
-            <input type="submit" value="힙한">
-        </div>
-        <br>
-        2. 기분으로 선택하기 -나의 기분으로 선택
-        <h2>기분이 _____ 날- 나 오늘 ___해 </h2>
-        <div class="">
-            <input type="submit" value="울적한">
-        </div>
-        <div class="">
-            <input type="submit" value="화나는">
-        </div>
-        <div class="">
-            <input type="submit" value="기분전환이 필요한">
-        </div>
+    <div class="contents">
+        <form action="{% url 'main' %}" method="POST">
+            {% csrf_token %}
+            <img src="{% static 'image/logo1.png' %}" class="logo" width="60px" height="25px">
+            <div class="h1">
+                오늘의 감성은? Today's Mood</div>
+            <br>
+            <div class="box1">
+                1. 느낌으로 선택하기- 가게의 느낌으로 선택
+                <h2>느낌이 ______ 가게</h2>
+                <div class="">
+                    <input type="submit" class="g1" value="#아기자기한">
+                </div>
+                <div class="">
+                    <input type="submit" class="g2" value="#힙한">
+                </div>
+            </div>
+            <br>
+            <div class="box2">
+                2. 기분으로 선택하기 -나의 기분으로 선택
+                <h2>기분이 _____ 날- 나 오늘 ___해 </h2>
+                <div class="">
+                    <input type="submit" class="gg1" value="#울적한">
+                </div>
+                <div class="">
+                    <input type="submit" class="gg2" value="#화나는">
+                </div>
+                <div class="">
+                    <input type="submit" class="gg3" value="#기분전환이 필요한">
+                </div>
+            </div>
 
-    </form>
+        </form>
+    </div>
 
 </body>
 
