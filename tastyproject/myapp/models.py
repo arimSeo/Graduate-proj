@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from accounts.models import MyUser
+from django.conf import settings
 
 # Create your models here.
-class Recommand(models.Model):
+class Recommend(models.Model):
     photos=models.ImageField()
     #세 가게를 각각 먼저 추천
     food= models.CharField(max_length=20) #식당이름

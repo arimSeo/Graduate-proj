@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 # from .forms import RegisterForm
+# from myapp.models import Recommend
+from django.conf import settings
 
 
 def register(request):

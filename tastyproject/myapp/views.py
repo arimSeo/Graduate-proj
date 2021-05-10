@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Recommand
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Recommend
 from django.contrib.auth.models import User
+# from accounts.models import MyUser
+from django.conf import settings
 
 def index(request):
     _context = {'check':False}
@@ -10,14 +12,13 @@ def index(request):
 
 # @login_required
 def gamseong(request):
-    # user = get_object_or_404(User)
-    # all_user= User.objects.all()
-    # myuser= User.objects.get(user=request.user)
-    # return render(request,'gamseong.html',{'all_user':all_user,'myuser':myuser})
-    restaurant= Recommand.objects.all()
+    restaurant= Recommend.objects.all()
     # if request.method=="POST":
         # 메인에서 추천할 각각의 가게들
-    return render(request,'gamseong.html')
+    if request.POST:        #각 input에 감성 submit했을때 나올 추천리스트 다르게
+        if request.POST['gam1']:       #이렇게 하면 페이지 감정 수만큼 만들어야함,,
+            return redirect("main")
+    return render(request,'gamseong.html',{'restaurant':restaurant})
 
 def main(request):
     return render(request,'main.html')

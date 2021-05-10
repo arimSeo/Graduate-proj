@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
-
+from myapp.models import Recommend
+from django.conf import settings
 #테이블을 만드는것! User는 장고 기존 유저, 새 유저를 만들려면 모델 추가
 class MyUser(models.Model):
     M_or_F = (
@@ -18,5 +19,6 @@ class MyUser(models.Model):
     birth= models.DateField(null=True)
     gender=models.CharField( choices=M_or_F, max_length=2, null=True)
     permit = models.BooleanField(default=False)      #정보수집 동의체크
-    def __str__(self):
-        return str(self.user)
+    
+    def __str__(self):         #모델 클래스 객체의 문자열 표현 반환
+        return str(self.user)   #admin페이지에서 user 해당 문자열로 뜸

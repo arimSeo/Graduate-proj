@@ -9,6 +9,16 @@ body{
     font-size: 4.2rem;
 }
 
+.box1, .box2, .box3{
+    border:1px solid black;
+    padding:15% 10%;
+    margin:0 1% 0 1%;
+    display: inline-block;
+}
+.all_box{
+    margin:5% 0 10% 0;
+    /* display: block; */
+}
 
 
 
@@ -17,4 +27,15 @@ body{
     body{
         margin-top: 40%;
     }
+    .h1{
+        font-size: 2rem;
+        margin-bottom:8% ;
+    }
+    .box1, .box2, .box3{
+        border:1px solid black;
+        padding:20% 0%;
+        margin:0 30% 5% 30%;
+        display: block;
+    }
+
 }
