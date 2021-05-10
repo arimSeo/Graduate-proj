@@ -17,18 +17,23 @@
     <br>
     <!-- 선택하는 감성에 따라 다르게 {if~~} view에서?? -->
     <!-- 카테고리별로 / 식당|카페|술집 -처음 세개 랜덤 -->
-    <div class="all_box">
-        <div class="box1">
-            {}
-            식당 박스
+    <!-- 데이터 전송 form????? 클릭하면 추천10개 -->
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="all_box">
+            <!-- 나중에 input버튼에 box123클래스 부여해서 버튼모양 잡기 -->
+            <div class="box1">
+                {}
+                식당 박스
+            </div>
+            <div class="box2">
+                카페 박스
+            </div>
+            <div class="box3">
+                술집 박스
+            </div>
         </div>
-        <div class="box2">
-            카페 박스
-        </div>
-        <div class="box3">
-            술집 박스
-        </div>
-    </div>
+    </form>
 
 </body>
 

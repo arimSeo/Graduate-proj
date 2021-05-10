@@ -56,8 +56,14 @@ h2{
         border:transparent;
         background-color: #9a6b3e25;
         padding:1% 0 1% 0;
+    }
+    .box1{
         margin:0 6% 0 6%;
     }
+    .box2{
+        margin:0 6% 15% 6%;
+    }
+
     .h1{
         font-size: 3rem;
     }
