@@ -11,7 +11,7 @@ def index(request):
     return render(request, 'index.html', _context)
 
 # @login_required
-def gamseong(request):
+def gamseong(request,pk):
     restaurant= Recommend.objects.all()
     # if request.method=="POST":
         # 메인에서 추천할 각각의 가게들

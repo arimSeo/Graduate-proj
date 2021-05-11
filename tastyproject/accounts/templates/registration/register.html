@@ -16,7 +16,7 @@
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">Sign-Up</div>
         {% csrf_token %}
-
+       <div class="message">{{ message }}</div>
         <div class="idid">
             <label for="email" class="labelEmail">
                 <span>ID</span>
@@ -36,35 +36,13 @@
             <label for="pass2" class="labelPass">
                 <span>PW 확인</span>
             </label>
-            <input type="password" id="pass2" name="password2" value="{{ form.password2.value|default_if_none:'' }}"
-                required>
-        </div>
-        <!-- <div class="mf">
-            <span>성별</span>
-            <label for="gender" class="labelGender">
-                <input type="radio" id="gender" name="여자" value="남자">남자
-            </label>
-            <label for="gender" class="labelGender">
-                <input type="radio" id="gender" name="남자" value="여자">여자
-            </label>
-
+            <input type="password" id="pass2" name="password2" value="{{ form.password2.value|default_if_none:'' }}" required>
         </div>
 
-       -->
-        <!-- <div>
+        <div>
             <span>성별</span>
-            {{user_form.gender}}
-        </div> -->
-        <!-- <div>
-            <label for="gender" class="labelGender">
-                <span>성별</span>
-            </label>
-            <select>
-                <option value="남자">남자</option>
-                <option value="여자">여자</option>
-                <option value="중성">중성</option>
-            </select>
-        </div> -->
+            {{register_form.gender}}
+        </div>
 
         <div class="day">
             <label for="birth" class="labelBirth">

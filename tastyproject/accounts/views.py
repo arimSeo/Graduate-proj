@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import os, json
 from django.views import View
 import requests
@@ -11,24 +11,33 @@ from .models import MyUser
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
-# from .forms import RegisterForm
+from .forms import RegisterForm
 # from myapp.models import Recommend
 from django.conf import settings
 
 
+def login(request):
+    context={}
+    username=request.POST["username"]
+    password=request.POST["password1"]
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request,user)
+        return redirect('gamseong',user.pk)
+    else:
+        context['message']="잘못된 아이디/비밀번호 입니다."
+        return render(request, 'registration/login.html', context)
+
 def register(request):
-    # register_form=UserCreationForm()   #유저생성폼을 만든다
-    # my_user=User.objects.get(user=request.user)
-    # user_form=MyUser(instance=my_user)
+    context={}
+    register_form=RegisterForm()
     #추가할것!
-    #성별 폼 띄우기
-    #비번 일치안하면 오류 띄우기 -예외처리
+    #성별 폼 띄우기ㅇㅇㅇㅇ완료
+    #비번 일치안하면 오류 띄우기 ㅇㅇㅇㅇㅇㅇㅇㅇ완료
     #아이디 같은거 있음 오류뜸-예외처리
     if request.method=="POST":
+        # register_form=RegisterForm(request.POST)
         if request.POST["password1"] == request.POST["password2"]:
-            # username = request.POST['username']
-            # password = request.POST['password1']
-            # try:
             user = User.objects.create_user(
                 username=request.POST["username"],
                 password=request.POST["password1"])
@@ -36,10 +45,16 @@ def register(request):
                 user=user,
                 name=request.POST["username"],
                 birth=request.POST["birthday"],
+                gender=request.POST["gender"],
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save()
-            return redirect('gamseong')
-        
+            # if register_form.is_valid():
+            #     register_form.save()
+            return redirect('gamseong',user.pk)
+        else:
+            message="✔ 비밀번호가 일치하지 않습니다."
+            context= {'message':message,'register_form':register_form}
+            return render(request,'registration/register.html',context)
                 # user = User(username=username)
                 # user.set_password(password)
                 # user.save()
@@ -52,8 +67,8 @@ def register(request):
             #     return redirect('register')
     else:
         # regi_form= RegisterForm()
-        return render(request,'registration/register.html')
-        # return render(request,'registration/register.html',{'user_form':user_form,'my_user':my_user})
+        # return render(request,'registration/register.html')
+        return render(request,'registration/register.html',{'register_form':register_form})
 
 
 ###

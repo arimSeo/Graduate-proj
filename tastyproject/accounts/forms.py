@@ -4,7 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import MyUser
 
-
+class RegisterForm(forms.ModelForm):
+    class Meta:
+        model= MyUser
+        fields=['gender']
 # class RegisterForm(forms.ModelForm):
 #     password=forms.CharField(label='Password',widget=forms.PasswordInput)
 #     password2= forms.CharField(label='Reapeat Password', widget=forms.PasswordInput)
