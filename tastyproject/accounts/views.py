@@ -55,19 +55,7 @@ def register(request):
             message="✔ 비밀번호가 일치하지 않습니다."
             context= {'message':message,'register_form':register_form}
             return render(request,'registration/register.html',context)
-                # user = User(username=username)
-                # user.set_password(password)
-                # user.save()
-                
-                # login(request,user)
-                # return redirect('gamseong')
-            # except:
-            #     message = '존재하는 아이디입니다.'
-            #     context['message'] = message      #context정의안됬다고 에러뜸
-            #     return redirect('register')
     else:
-        # regi_form= RegisterForm()
-        # return render(request,'registration/register.html')
         return render(request,'registration/register.html',{'register_form':register_form})
 
 

@@ -18,7 +18,7 @@ body{
 }
 
 .idid{
-    margin:4% 0 1.5% 0;
+    margin:5% 0 1.5% 0;
     color:#ED7D31;
 }
 .pw1{
@@ -26,7 +26,7 @@ body{
     color:#ED7D31;
 }
 .pw2{
-    margin:0 0 1.5% 0;
+    margin:0 1% 1.5% 0;
     color:#ED7D31;
 }
 
@@ -49,30 +49,18 @@ input:focus{
     margin-left: 1%;
 }
 #birth{
-    width:160px;
+    width:168px;
 }
 
 .day{
-    margin:0 0 2% 0;
+    margin:1.5% 0 2% 0;
+    color:#ED7D31;
+}
+.gen{
+    margin:0 3% 2% 0;
     color:#ED7D31;
 }
 
-
-   /* input[type=date]::-webkit-datetime-edit-text { 
-       -webkit-appearance: none;
-        display: none; } 
-   input[type=date]::-webkit-datetime-edit-month-field{ 
-       -webkit-appearance: none; 
-    display: none; 
-} 
-    input[type=date]::-webkit-datetime-edit-day-field { 
-        -webkit-appearance: none; 
-        display: none; 
-    } 
-        input[type=date]::-webkit-datetime-edit-year-field {
-             -webkit-appearance: none; 
-            display: none; 
-        } */
 input[id="check"] + label {
     display: inline-block;
     width: 12px;
@@ -113,11 +101,25 @@ input[id="check"] {
         font-weight: bold;
     }
     .idid{
-        margin:12% 0 5% 0;
+        margin:14% 0 5% 0;
     }
     .pw2{
-        margin-top:5%;
-        margin-bottom: 5%;
+        margin:5% 0 5% 0;
+    }
+    .day{
+        margin:5% 0 0 1%;
+    }
+    #birth{
+        margin:0 0 0 9%;
+    }
+    #pass{
+        margin:0 0 0 10%;
+    }
+    #email{
+        margin:0 0 0 11%;
+    }
+    .gen-form{
+        margin:0 0 0 3%;
     }
 
     .permit{
