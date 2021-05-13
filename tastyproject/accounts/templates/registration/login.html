@@ -14,7 +14,8 @@
 
 <body>
     <!-- <div>{{ message }}</div> -->
-    <form action="{% url 'accounts:login' %}" method="POST">
+    <!-- <form action="{% url 'gamseong' user.pk %}" method="POST"> -->
+    <form action="" method="POST">
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">LOGIN</div>
         {% csrf_token %}

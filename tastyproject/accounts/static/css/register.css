@@ -131,10 +131,13 @@ input[id="check"] {
     .check{
         margin-bottom: 4%;
     }
+    .day{
+        margin-bottom: 4%;
+    }
 
     .regi_btn{
         margin:8% 0 0.5% 0;
-        width:45%;
+        width:50%;
     }
 
 }

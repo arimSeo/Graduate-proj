@@ -15,9 +15,9 @@ def gamseong(request,pk):
     restaurant= Recommend.objects.all()
     # if request.method=="POST":
         # 메인에서 추천할 각각의 가게들
-    if request.POST:        #각 input에 감성 submit했을때 나올 추천리스트 다르게
-        if request.POST['gam1']:       #이렇게 하면 페이지 감정 수만큼 만들어야함,,
-            return redirect("main")
+    # if request.POST:        #각 input에 감성 submit했을때 나올 추천리스트 다르게
+    #     if request.POST['gam1']:       #이렇게 하면 페이지 감정 수만큼 만들어야함,,
+    #         return redirect("main")
     return render(request,'gamseong.html',{'restaurant':restaurant})
 
 def main(request):

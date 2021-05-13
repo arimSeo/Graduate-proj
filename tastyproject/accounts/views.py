@@ -16,17 +16,20 @@ from .forms import RegisterForm
 from django.conf import settings
 
 
-def login(request):
-    context={}
-    username=request.POST["username"]
-    password=request.POST["password1"]
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request,user)
-        return redirect('gamseong',user.pk)
-    else:
-        context['message']="잘못된 아이디/비밀번호 입니다."
-        return render(request, 'registration/login.html', context)
+# def login(request):
+#     context={}
+#     username=request.POST["username"]
+#     password=request.POST["password1"]
+#     user = authenticate(request, username=username, password=password)
+#     if user is not None:
+#         login(request,user)
+#         return redirect('gamseong',user.pk)
+#     else:
+#         context['message']="잘못된 아이디/비밀번호 입니다."
+#         return render(request, 'registration/login.html', context)
+
+# def login(request):
+#     return render(request, 'login.html')
 
 def register(request):
     context={}
