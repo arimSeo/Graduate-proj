@@ -45,7 +45,7 @@ input:focus{
 }
 
 #email{
-    margin-left: 2%;
+    margin-left: 4%;
 }
 
 .login_btn{
@@ -91,7 +91,7 @@ p{
     }
     
     .labelEmail{
-        margin-left:6%;
+        margin-left:12%;
     }
 
     .login_btn{

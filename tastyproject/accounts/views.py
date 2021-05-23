@@ -65,23 +65,23 @@ def register(request):
 ###
 #소셜로그인
 def kakaoLogin(request):
-    _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
-
-    _redirectUrl = 'http://127.0.0.1:8000/'
+    # _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
+    _restApiKey='81c8ef79f775f47d6e2cc9c8eef60de8'
+    _redirectUrl = 'http://127.0.0.1:8000/main/'
     _url = f'https://kauth.kakao.com/oauth/authorize?client_id={_restApiKey}&redirect_uri={_redirectUrl}&response_type=code'
     return redirect(_url)
 
 def kakaoLoginRedirect(request):
     _qs = request.GET['code']
-    _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
-   
-    _redirect_uri = 'http://127.0.0.1:8000/'
+    # _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
+    _restApiKey='81c8ef79f775f47d6e2cc9c8eef60de8'
+    _redirect_uri = 'http://127.0.0.1:8000/main/'
     _url = f'https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={_restApiKey}&redirect_uri={_redirect_uri}&code={_qs}'
-    _res = requests.post(_url)
+    _res = request.post(_url)
     _result = _res.json()
     request.session['access_token'] = _result['access_token']
     request.session.modified = True
-    return render(request, 's.html')
+    return render(request, 'in.html',{"_restApiKey":_restApiKey})
 
 
 def kakaoLogout(request):

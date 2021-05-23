@@ -119,8 +119,17 @@ WSGI_APPLICATION = 'tastyproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tasty-db',
+        'USER': 'seo',
+        'PASSWORD': 'tasty98!',
+        'HOST': 'tasty.cqca6sggc1nx.ap-northeast-2.rds.amazonaws.com',
+        'PORT':'3306',
+        'OPTIONS': {
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
+        }
     }
 }
 

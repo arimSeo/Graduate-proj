@@ -14,8 +14,8 @@
 
 <body>
     <!-- <div>{{ message }}</div> -->
-    <!-- <form action="{% url 'gamseong' user.pk %}" method="POST"> -->
-    <form action="" method="POST">
+    <form action="{% url 'gamseong' user.pk %}" method="POST">
+    {% comment %} <form action="" method="POST"> {% endcomment %}
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">LOGIN</div>
         {% csrf_token %}
@@ -38,7 +38,7 @@
         {% endif %}
         <div class="idid">
             <label for="email" class="labelEmail">
-                <span class="contentEmail">E-mail</span>
+                <span class="contentEmail">ID</span>
             </label>
             <input type="text" id='email' name="username" autocomplete="off" placeholder="아이디 입력"
                 value="{{ form.username.value|default_if_none:'' }}" required>

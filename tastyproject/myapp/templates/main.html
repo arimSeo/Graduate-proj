@@ -18,12 +18,23 @@
     <!-- 선택하는 감성에 따라 다르게 {if~~} view에서?? -->
     <!-- 카테고리별로 / 식당|카페|술집 -처음 세개 랜덤 -->
     <!-- 데이터 전송 form????? 클릭하면 추천10개 -->
+    {% comment %}     
+    {% for mini_category in mini_categories %}
+    <a href="{% url 'get_mini_category' mini_category.id %}">
+        <div class="mini-category-select"> {{ mini_category }}</div>
+    </a>
+    {% endfor %}
+     {% endcomment %}
+
     <form action="" method="POST">
         {% csrf_token %}
         <div class="all_box">
             <!-- 나중에 input버튼에 box123클래스 부여해서 버튼모양 잡기 -->
             <div class="box1">
-                {}
+            {% comment %} 포토,가게이름 id번호순서대로 {% endcomment %}
+                {{restaurant.photos}}
+                {{restaurant.r_name}}
+                {{restaurant.r_type}}
                 식당 박스
             </div>
             <div class="box2">
