@@ -13,7 +13,7 @@
 
 <body>
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
-    <div class="h1">당신의 감성맞춤 맛집</div>
+    <div class="h1">어떤 감성의 장소가 마음에 드시나요?</div>
     <br>
     <!-- 선택하는 감성에 따라 다르게 {if~~} view에서?? -->
     <!-- 카테고리별로 / 식당|카페|술집 -처음 세개 랜덤 -->
@@ -30,20 +30,30 @@
         {% csrf_token %}
         <div class="all_box">
             <!-- 나중에 input버튼에 box123클래스 부여해서 버튼모양 잡기 -->
+            {% comment %} 낮밤 datetime {% endcomment %}
+            {% if food %}
             <div class="box1">
-            {% comment %} 포토,가게이름 id번호순서대로 {% endcomment %}
-                {{restaurant.photos}}
-                {{restaurant.r_name}}
-                {{restaurant.r_type}}
-                식당 박스
+                <div><img src="{{food.photos}}"/></div>
+                <div>name: {{food.r_name}}</div>
+                <div>type: {{food.r_type}}</div>
+                식당박스
             </div>
+            {% endif %}
             <div class="box2">
+                <div><img src="{{restaurant.photos}}"/></div>
+                <div>name: {{restaurant.r_name}}</div>
+                <div>type: {{restaurant.r_type}}</div>
                 카페 박스
             </div>
             <div class="box3">
+            <div><img src="{{restaurant.photos}}"/></div>
+            <div>name: {{restaurant.r_name}}</div>
+            <div>type: {{restaurant.r_type}}</div>
                 술집 박스
             </div>
+
         </div>
+
     </form>
 
 </body>

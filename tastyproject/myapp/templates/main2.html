@@ -1,15 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/main2.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <title>추천추천</title>
 </head>
 
 <body>
-    추천10개+
+    <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
+    <div class="h1">당신의 감성맞춤 맛집</div>
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="all_box">
+        {% comment %} {% for i in restaurant2 %} {% endcomment %}
+            
+            {% comment %} 포토,가게이름 id번호순서대로 {% endcomment %}
+            {% for i in restaurant2 %}
+            <div class="box1">
+                <div><img src="{{restaurant2.photos}}"/></div>
+                <div>name: {{restaurant2.r_name}}</div>
+                <div>type: {{restaurant2.r_type}}</div>
+                추천10개
+            </div>
+            {% endfor %}
+            
+        </div>
+
+    </form>
 </body>
 
 </html>
