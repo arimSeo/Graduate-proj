@@ -38,6 +38,7 @@ def register(request):
     #성별 폼 띄우기ㅇㅇㅇㅇ완료
     #비번 일치안하면 오류 띄우기 ㅇㅇㅇㅇㅇㅇㅇㅇ완료
     #아이디 같은거 있음 오류뜸-예외처리
+       
     if request.method=="POST":
         # register_form=RegisterForm(request.POST)
         if request.POST["password1"] == request.POST["password2"]:
@@ -51,9 +52,10 @@ def register(request):
                 gender=request.POST["gender"],
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save()
-            # if register_form.is_valid():
-            #     register_form.save()
-            return redirect('gamseong',user.pk)
+          
+
+                
+            return redirect('gamseong')
         else:
             message="✔ 비밀번호가 일치하지 않습니다."
             context= {'message':message,'register_form':register_form}

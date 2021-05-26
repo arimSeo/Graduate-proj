@@ -12,8 +12,9 @@ def index(request):
     return render(request, 'index.html', _context)
 
 # @login_required
-def gamseong(request,pk):
+def gamseong(request):
     user=request.user
+    print(user)
     # 각 cluster별 랜덤으로
     # 이거를 모델에 넣어서 pnu퀴즈처럼 꺼내는 느낌?!?or
     r_mood1=['어두운', '레트로', '빈티지한', '느낌있는', '외국감성']

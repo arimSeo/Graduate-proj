@@ -12,12 +12,14 @@
 </head>
 
 <body>
+
     <form action="" method="POST">
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">Sign-Up</div>
         {% csrf_token %}
        <div class="message">{{ message }}</div>
         <div class="idid">
+      
             <label for="email" class="labelEmail">
                 <span>ID</span>
             </label>
