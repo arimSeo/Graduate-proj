@@ -20,7 +20,7 @@ class MyUser(models.Model):
     gender=models.CharField( choices=M_or_F, max_length=2, null=True)
     permit = models.BooleanField()      #정보수집 동의체크
     
-    USERNAME_FIELD = 'name'
+    USERNAME_FIELD = 'user'
 
     def __str__(self):         #모델 클래스 객체의 문자열 표현 반환
-        return str(self.name)   #admin페이지에서 user 해당 문자열로 뜸
+        return str(self.user)   #admin페이지에서 user 해당 문자열로 뜸

@@ -13,7 +13,7 @@
 
 <body>
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
-    <div class="h1">어떤 감성의 장소가 마음에 드시나요?</div>
+    <div class="h1">어떤 감성의 장소가 <br>마음에 드시나요?</div>
     <br>
     <!-- 선택하는 감성에 따라 다르게 {if~~} view에서?? -->
     <!-- 카테고리별로 / 식당|카페|술집 -처음 세개 랜덤 -->
@@ -33,22 +33,22 @@
             {% comment %} 낮밤 datetime {% endcomment %}
             {% if food %}
             <div class="box1">
-                <div><img src="{{food.photos}}"/></div>
-                <div>name: {{food.r_name}}</div>
-                <div>type: {{food.r_type}}</div>
+                <div><img src="{{food.dayimg}}"/></div>
+                <div>name: {{food.name}}</div>
+                <div>type: {{food.category}}</div>
                 식당박스
             </div>
             {% endif %}
             <div class="box2">
-                <div><img src="{{restaurant.photos}}"/></div>
-                <div>name: {{restaurant.r_name}}</div>
-                <div>type: {{restaurant.r_type}}</div>
+                <div><img src="{{restaurant.dayimg}}"/></div>
+                <div>name: {{restaurant.name}}</div>
+                <div>type: {{restaurant.category}}</div>
                 카페 박스
             </div>
             <div class="box3">
-            <div><img src="{{restaurant.photos}}"/></div>
-            <div>name: {{restaurant.r_name}}</div>
-            <div>type: {{restaurant.r_type}}</div>
+            <div><img src="{{restaurant.dayimg}}"/></div>
+            <div>name: {{restaurant.name}}</div>
+            <div>type: {{restaurant.category}}</div>
                 술집 박스
             </div>
 

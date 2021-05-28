@@ -22,9 +22,9 @@
             {% comment %} 포토,가게이름 id번호순서대로 {% endcomment %}
             {% for i in restaurant2 %}
             <div class="box1">
-                <div><img src="{{restaurant2.photos}}"/></div>
-                <div>name: {{restaurant2.r_name}}</div>
-                <div>type: {{restaurant2.r_type}}</div>
+                <div><img src="{{restaurant2.dayimg}}"/></div>
+                <div>name: {{restaurant2.name}}</div>
+                <div>type: {{restaurant2.category}}</div>
                 추천10개
             </div>
             {% endfor %}

@@ -38,7 +38,7 @@ def register(request):
     #성별 폼 띄우기ㅇㅇㅇㅇ완료
     #비번 일치안하면 오류 띄우기 ㅇㅇㅇㅇㅇㅇㅇㅇ완료
     #아이디 같은거 있음 오류뜸-예외처리
-       
+    # username=MyUser.objects.all()
     if request.method=="POST":
         # register_form=RegisterForm(request.POST)
         if request.POST["password1"] == request.POST["password2"]:
@@ -51,11 +51,9 @@ def register(request):
                 birth=request.POST["birthday"],
                 gender=request.POST["gender"],
                 permit=request.POST.get('ispermit', '') == 'on')
-            profile.save()
-          
-
-                
-            return redirect('gamseong')
+            profile.save() 
+            # 회원가입 성공! 메시지띄우고 로그인 하도록
+            return redirect('accounts:login')
         else:
             message="✔ 비밀번호가 일치하지 않습니다."
             context= {'message':message,'register_form':register_form}
@@ -66,18 +64,19 @@ def register(request):
 
 ###
 #소셜로그인
+
 def kakaoLogin(request):
     # _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
     _restApiKey='81c8ef79f775f47d6e2cc9c8eef60de8'
-    _redirectUrl = 'http://127.0.0.1:8000/main/'
+    _redirectUrl = 'http://127.0.0.1:8000/gamseong/'
     _url = f'https://kauth.kakao.com/oauth/authorize?client_id={_restApiKey}&redirect_uri={_redirectUrl}&response_type=code'
     return redirect(_url)
 
 def kakaoLoginRedirect(request):
     _qs = request.GET['code']
-    # _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
+    # _restApiKey = os.settings.get.KAKAO_REST_API_KEY # 입력필요
     _restApiKey='81c8ef79f775f47d6e2cc9c8eef60de8'
-    _redirect_uri = 'http://127.0.0.1:8000/main/'
+    _redirect_uri = 'http://127.0.0.1:8000/gamseong/'
     _url = f'https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={_restApiKey}&redirect_uri={_redirect_uri}&code={_qs}'
     _res = request.post(_url)
     _result = _res.json()

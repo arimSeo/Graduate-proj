@@ -77,8 +77,8 @@ LOGIN_REDIRECT_URL = 'gamseong'             # 로그인 후 리디렉션할 페�
 # ACCOUNT_LOGOUT_REDIRECT_URL = "login"    # 로그아웃 후 리디렉션 할 페이지
 ACCOUNT_LOGOUT_ON_GET = True            # 로그아웃 버튼 클릭 시 자동 로그아웃
 
-# KAKAO_REST_API_KEY = os.environ.get("KAKAO_REST_API_KEY")
-KAKAO_REST_API_KEY = os.environ.get('81c8ef79f775f47d6e2cc9c8eef60de8')
+
+KAKAO_REST_API_KEY = os.environ.get("KAKAO_REST_API_KEY")
 #~카카오 소셜로그인
 
 

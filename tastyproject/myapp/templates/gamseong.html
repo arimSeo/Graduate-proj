@@ -21,7 +21,7 @@
     <!-- form 한개에 submit 한개로하면 버튼 각각에 다 폼으로 해야하나????
     아아ㅏ아니다 중복 아니니까 하나니까 다 submit 해도되나. 근데 pnu퀴즈는 각각에 다해줬는데,,  -->
     <!-- 옵션을 줘서 각 해당 추천모델폼 연결 -->
-    <form action="{% url 'main' %}" method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
         <img src="{% static 'image/logo1.png' %}" class="logo" width="60px" height="25px">
         <div class="h1">
@@ -30,68 +30,73 @@
             {% comment %} user는 뷰에서 가져온것 {% endcomment %}
         <br><br>
         <div class="box1">
-            1. 느낌으로 선택하기- 가게의 느낌으로 선택
-            <h2>느낌이 ______ 가게</h2>
-          <div class="mini-box">
+            <h2>✔ 가게의 느낌으로 선택</h2>
+        <div class="mini-box1">
         <div class="row1">
             <div class="">
-                <input type="submit" class="g1" name="gam1" value="{{random_r_mood1}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood1}}">
             </div>
             <div class="">
-                <input type="submit" class="g1" name="gam2" value="{{random_r_mood2}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood2}}">
             </div>
             <div class="">
-                <input type="submit" class="g1" name="gam3" value="{{random_r_mood3}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood3}}">
             </div>
             <div class="last">
-                <input type="submit" class="g1" name="gam4" value="{{random_r_mood4}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood4}}">
             </div>
         </div>
         <div class="row2">
             <div class="">
-                <input type="submit" class="g1" name="gam5" value="{{random_r_mood5}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood5}}">
             </div>
             <div class="">
-                <input type="submit" class="g1" name="gam6" value="{{random_r_mood6}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood6}}">
             </div>
             <div class="">
-                <input type="submit" class="g1" name="gam7" value="{{random_r_mood7}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood7}}">
             </div>
             <div class="last">
-                <input type="submit" class="g1" name="gam8" value="{{random_r_mood8}}">
+                <input type="submit" class="g1" name="gam" value="{{random_r_mood8}}">
             </div>
         </div>
         </div>
 
         </div>
         <br>
+        
         <div class="box2">
-            2. 기분으로 선택하기 -나의 기분으로 선택
-            <h2>기분이 _____ 날- 나 오늘 ___해 </h2>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood1}}">
+            <h2> ✔ 나의 기분으로 선택</h2>
+            <div class="mini-box2">
+            <div class="row1">
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood1}}">
             </div>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood2}}">
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood2}}">
             </div>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood3}}">
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood3}}">
             </div>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood4}}">
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood4}}">
             </div>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood5}}">
             </div>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood6}}">
+            <div class="row2">
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood5}}">
             </div>
-            <div class="">
-                <input type="submit" class="gg1" value="{{random_p_mood7}}">
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood6}}">
+            </div>
+            <div class="g">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood7}}">
             </div>
             <div class="last">
-                <input type="submit" class="gg1" value="{{random_p_mood8}}">
+                <input type="submit" class="gg1" name="gam" value="{{random_p_mood8}}">
             </div>
+            </div>
+        </div>
         </div>
 
     </form>
