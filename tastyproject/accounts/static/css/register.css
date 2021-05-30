@@ -1,4 +1,17 @@
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+@font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+  }
 body{
+    font-family: 'LotteMartDream';
     text-align: center;
     margin-top: 7%;
     background-color: #FFF8ED;
@@ -12,7 +25,7 @@ body{
 }
 
 .h1{
-    font-family: Ubuntu Mono;
+    font-family: 'KyoboHand';
     color:#ED7D31;
     font-size: 4.6rem;
 }
@@ -73,10 +86,10 @@ input[id="check"]:checked + label {
 }
 input[id="check"] {
     display: none;
-    margin-top:1%;
+    /* margin-top:1%; */
 }
 .permit{
-    margin:-1.65% 0 0 12%;
+    margin:-1.35% 0 0 12%;
 }
 .check{
     margin:0 0 0 0%;
@@ -123,7 +136,7 @@ input[id="check"] {
     }
 
     .permit{
-        margin:-5.6% 0 0 38%;
+        margin:-4.8% 0 0 38%;
     }
     .labelCheck{
         margin-top: 4%;

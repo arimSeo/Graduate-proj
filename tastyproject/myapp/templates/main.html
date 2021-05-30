@@ -13,8 +13,11 @@
 
 <body>
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
-    <div class="h1">어떤 감성의 장소가 <br>마음에 드시나요?</div>
+    <div class="h1">이런 장소 어때요?</div>
     <br>
+     <a href="{% url 'main' %}" class="more_btn"> 🙄🤔 마음에 드는 장소가 없어요</a><br>
+         더 많은 식당을 추천 받고 싶다면 아래 사진?추가버튼을 클릭해 주세요!<br><br>
+             <a href="{% url 'main2' %}" class="more_btn"> main2 임시버튼</a><br>
     <!-- 선택하는 감성에 따라 다르게 {if~~} view에서?? -->
     <!-- 카테고리별로 / 식당|카페|술집 -처음 세개 랜덤 -->
     <!-- 데이터 전송 form????? 클릭하면 추천10개 -->
@@ -52,6 +55,10 @@
                 술집 박스
             </div>
 
+        </div>
+        <div class="more">
+        감성선택 페이지에서 버튼 css수정하고 복붙
+            <a href="{% url 'main' %}" class="more_btn"> 🙄🤔 마음에 드는 장소가 없어요</a>
         </div>
 
     </form>

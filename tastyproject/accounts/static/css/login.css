@@ -1,11 +1,32 @@
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+@font-face {
+        font-family: 'CookieRun-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+      @font-face {
+        font-family: 'LotteMartDream';
+        font-style: normal;
+        font-weight: 400;
+        src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+      }
+
 body{
+    font-family: 'LotteMartDream';
     margin-top: 7%;
     text-align: center;
     background-color: #FFF8ED;
 }
 
+
 .h1{
-    font-family: Ubuntu Mono;
+    font-family: 'KyoboHand';
     color:#ED7D31;
     font-size: 5rem;
 }

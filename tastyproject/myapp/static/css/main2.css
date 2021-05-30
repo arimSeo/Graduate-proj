@@ -1,12 +1,18 @@
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
 body{
+    font-family: 'KyoboHand';
     margin-top: 7%;
     text-align: center;
     background-color: #FFF8ED;
 }
 .h1{
-    font-family: Ubuntu Mono;
     color:#ED7D31;
-    font-size: 5rem;
+    font-size: 4.6rem;
 }
 
 .box1, .box2, .box3{
@@ -16,7 +22,7 @@ body{
     display: inline-block;
 }
 .all_box{
-    margin:5% 0 10% 0;
+    margin:3% 0 10% 0;
     /* display: block; */
 }
 
@@ -28,8 +34,8 @@ body{
         margin-top: 40%;
     }
     .h1{
-        font-size: 2rem;
-        margin-bottom:8% ;
+        font-size: 2.3rem;
+        margin-bottom:6% ;
     }
     .box1, .box2, .box3{
         border:1px solid black;
