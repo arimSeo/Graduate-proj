@@ -35,8 +35,6 @@ def register(request):
     context={}
     register_form=RegisterForm()
     #추가할것!
-    #성별 폼 띄우기ㅇㅇㅇㅇ완료
-    #비번 일치안하면 오류 띄우기 ㅇㅇㅇㅇㅇㅇㅇㅇ완료
     #아이디 같은거 있음 오류뜸-예외처리
     # username=MyUser.objects.all()
     if request.method=="POST":
@@ -52,8 +50,15 @@ def register(request):
                 gender=request.POST["gender"],
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save() 
-            # 회원가입 성공! 메시지띄우고 로그인 하도록
             return redirect('accounts:login')
+            # try: 
+            #     cleaned_data = super().clean()
+            #     username = cleaned_data.get('username')
+            #     User.objects.get(pk=username) 
+            #     sel=self.add_error('username', '이미 가입된 이메일입니다.')
+            # except:
+            #     pass
+
         else:
             message="✔ 비밀번호가 일치하지 않습니다."
             context= {'message':message,'register_form':register_form}

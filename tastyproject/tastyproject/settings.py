@@ -37,9 +37,40 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#장고 로그 받기
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+        'mail_admins': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['mail_admins'],   #DEBUG=False일때만 가능
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+ADMINS = ['arimy981002@naver.com']
 
-ALLOWED_HOSTS = []
+DEBUG = True   #false로 고치기
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

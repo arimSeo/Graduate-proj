@@ -9,17 +9,28 @@
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <title>회원가입</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
 
-    <form action="" method="POST">
+    <form action="" method="POST" id='popup'>
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">Sign-Up</div>
         {% csrf_token %}
+        
+        {% comment %} {% for field in form %} 
+        <div class="form-group"> 
+        <label for='{{field.id_for_label}}'>{{field.label}}</label>
+         {{field}} </div>
+          {% if field.errors %}
+           <span style='color:red'>{{field.errors}}</span>
+        {% endif %} 
+        {% endfor %} {% endcomment %}
+
        <div class="message">{{ message }}</div>
+
         <div class="idid">
-      
             <label for="email" class="labelEmail">
                 <span>ID</span>
             </label>
@@ -61,8 +72,17 @@
             </label>
             <p class="permit">개인정보수집 동의</p>
         </div>
-        <input type="image" src="{% static 'image/Group 3.png' %}" class="regi_btn">
+        <input onClick="btn()" type="image" src="{% static 'image/Group 3.png' %}" class="regi_btn">
     </form>
+    <script>
+    function btn() {
+        //비밀번호 일치안하면 안뜨게
+        swal("Welcome!", "회원가입이 완료되었습니다. 로그인해주세요.", "success");
+        document.getElementById("popup").submit()
+        //else: swal("Welcome!", "비밀번호가 일치하지 않습니다.", "error");
+    }
+    </script>
+
 </body>
 
 </html>
