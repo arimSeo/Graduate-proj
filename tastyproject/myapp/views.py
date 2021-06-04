@@ -54,15 +54,37 @@ def gamseong(request):
     random_p_mood6 = random.choice(p_mood3)
     random_p_mood8 = random.choice(p_mood4)
 
-# r/p_mood에서 앞에 random_r_mood에 존재하면 리스트에서 빼내고 다음 랜덤 버튼엔 앞에꺼에서 없는 걸로 랜덤. 
     # if request.method=="POST":
         # 메인에서 추천할 각각의 가게들
-    if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
-        gam=request.POST['gam']     #이렇게 하면 페이지 감정 수만큼 만들???/xxxx main으로 각각 다보내면 되지않나???
-        return render(request, 'main.html',{'gam':gam} )
+    # if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
+    #     gam=request.POST['gam']
+    #     return render(request, 'main.html',{'gam':gam})
+
     context={"random_r_mood1":random_r_mood1,"random_r_mood2":random_r_mood2,"random_r_mood3":random_r_mood3,"random_r_mood4":random_r_mood4,"random_r_mood5":random_r_mood5,"random_r_mood6":random_r_mood6,"random_r_mood7":random_r_mood7,"random_r_mood8":random_r_mood8,"r_mood1":r_mood1,"r_mood2":r_mood2,"r_mood3":r_mood3,"r_mood4":r_mood4,"r_mood5":r_mood5,"r_mood6":r_mood6,"r_mood7":r_mood7,"r_mood8":r_mood8,"random_p_mood1":random_p_mood1,"random_p_mood2":random_p_mood2,"random_p_mood3":random_p_mood3,"random_p_mood4":random_p_mood4,"random_p_mood5":random_p_mood5,"random_p_mood6":random_p_mood6,"random_p_mood7":random_p_mood7,"random_p_mood8":random_p_mood8,"p_mood1":p_mood1,"p_mood2":p_mood2,"p_mood3":p_mood3,"p_mood4":p_mood4}
     return render(request,'gamseong.html',context)
 
+# test용 -감성키워드 선택/전달~~추천알고리즘
+#1. json으로 띄우기!!!!!!!!!!!!!!!!!!!
+#2. 감성 request 전달 받아서 연결!!!!!!!!!(html상 문제다-파라미터 받기)
+from . import testAPI
+def test(request):
+    # if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
+    #     if request.POST['r_gam']:
+    #         r_gam=request.POST['r_gam']
+
+    #     if request.POST['p_gam']:
+    #         p_gam=request.POST['p_gam']
+    # post로 받아서context(파라미터값)에 담아서 전달!
+    # r_keyword=request.POST['r_gam']     #식당감성 선택시
+    # p_keyword=request.POST['p_gam']
+    r_keyword='인테리어예쁜'
+    result= testAPI.find_sim_rest(r_keyword)  #result1,2로 각각 r/pmood알고리즘
+
+    return render(request, 'test.html',{'result':result})
+
+##
+from . import recommend_r, recommend_p
+import json
 def main(request):
     restaurant= RestaurantList.objects.all()
     # 일단 타입별로 모델에서 다불러오고(filter) <-이거는 db로 자동 알고리즘 돌려서 id값이나 이름으로 불러서! 
@@ -71,7 +93,18 @@ def main(request):
     alchol=RestaurantList.objects.filter(category="술집")
     # 감성value받아서 키워드 유사 + (감성이름을 pk로-그럼 모델만들어야하나,,)
     # 식당, 카페, 술집 각각의 모델??? 아님 filter(r_type="카페")인거를 각각!
-    context={"restaurant":restaurant,"food":food,"cafe":cafe,"alchol":alchol}
+
+    # if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
+    if request.POST['r_gam']:
+        r_keyword=request.POST['r_gam']
+        print(r_keyword)
+    # if request.POST['p_gam']:
+    #     p_keyword=request.POST['p_gam']
+    #     print(p_keyword)
+
+    r_result= recommend_r.find_sim_rest(r_keyword)   #df형식은 못가져와!!->json으로 
+    # p_result= recommend_p.find_sim_rest(p_keyword)
+    context={"r_keyword":r_keyword,"r_result":r_result}
     return render(request,'main.html',context)
 
 def main2(request):

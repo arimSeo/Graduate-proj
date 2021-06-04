@@ -16,18 +16,41 @@
     <div class="h1">이런 장소 어때요?</div>
     <br>
      <a href="{% url 'main' %}" class="more_btn"> 🙄🤔 마음에 드는 장소가 없어요</a><br>
-         더 많은 식당을 추천 받고 싶다면 아래 사진?추가버튼을 클릭해 주세요!<br><br>
+        or 이 감성의 더 많은 식당을 추천 받고 싶다면 아래 사진?추가버튼을 클릭해 주세요!<br><br>
              <a href="{% url 'main2' %}" class="more_btn"> main2 임시버튼</a><br>
-    {% comment %}     
-    {% for mini_category in mini_categories %}
-    <a href="{% url 'get_mini_category' mini_category.id %}">
-        <div class="mini-category-select"> {{ mini_category }}</div>
-    </a>
-    {% endfor %}
-     {% endcomment %}
 
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+        <h3>선택한 감성 ⭐{{r_keyword}}⭐과 어울리는 가게</h3><br>
+        {{r_result}}    
+        {% comment %} views.py {% endcomment %}
+        {% comment %} r/p각각 따로 {% endcomment %}
+        <br>###############<br>
+    {% if r_result %}
+    {{ r_result | json_script:'jsonData'}}
+    <script type = "text/javascript"> 
+        
+        const placeData = JSON.parse(document.getElementById('jsonData').textContent);
+        for (var key2 in placeData){
+            document.write(placeData[key2]+"<br>");
+        }
+    </script>
+    {% endif %}
+
+    {% if p_result %}
+    {{ p_result | json_script:'jsonData'}}
+    <script type = "text/javascript"> 
+        
+        const placeData = JSON.parse(document.getElementById('jsonData').textContent);
+        for (var key2 in placeData){
+            document.write(placeData[key2]+"<br>");
+        }
+    </script>
+    {% endif %}
+    
+
+
+        {% comment %}  {% endcomment %}
         <div class="all_box">
             <!-- 나중에 input버튼에 box123클래스 부여해서 버튼모양 잡기 -->
             {% comment %} 낮밤 datetime {% endcomment %}

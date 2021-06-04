@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+
+<body>
+    <h1>test용</h1>
+    {{result}}<br>  
+{% comment %} result는 views.py {% endcomment %}
+    {% if result %}
+    {{ result | json_script:'jsonData'}}
+    <script type = "text/javascript"> 
+        var placeData=JSON.stringfy(JSON.parse(document.getElementById('jsonData').textContent));
+        //const placeData = JSON.parse(document.getElementById('jsonData').textContent);
+        for (var key2 in jsonData){
+            document.write(jsonData[key2]+"<br>");
+        }
+    </script>
+        {% comment %} {{ result | json_script:'jsonData'}}
+        #############<br>
+        <script type = "text/javascript"> 
+            var placeData = JSON.parse(document.getElementById('jsonData').textContent);
+            for( var key1 in placeData){
+                var jsonData = JSON.parse(placeData)
+                   for (var key2 in jsonData)
+                {
+                //var strr=JSON.stringfy(jsonData)
+                //document.write(key2+" : " +jsonData+"<br>")            
+                document.write(key2+" : " +jsonData[key2]+"<br>")  
+                }
+            }
+        </script> {% endcomment %}
+
+    {% endif %}
+</body>
+
+</html>
