@@ -8,49 +8,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{% static 'main.js' %}"></script>
     <title>추천추천</title>
 </head>
 
 <body>
-    <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
-    <div class="h1">이런 장소 어때요?</div>
+    {% comment %} <div class="loading">
+        <img src="{% static 'image/load22.gif' %}" alt="loading" class="loading_img">
+    </div> {% endcomment %}
+    <img src="{% static 'image/logo1.png' %}" width="60px" height="25px" class="logo">
+    <div class="h1">이런 가게 어때요?</div>
     <br>
-     <a href="{% url 'main' %}" class="more_btn"> 🙄🤔 마음에 드는 장소가 없어요</a><br>
-        or 이 감성의 더 많은 식당을 추천 받고 싶다면 아래 사진?추가버튼을 클릭해 주세요!<br><br>
-             <a href="{% url 'main2' %}" class="more_btn"> main2 임시버튼</a><br>
+        <div>이 감성의 더 많은 가게를 추천 받고 싶다면 아래 사진?추가버튼을 클릭해 주세요!</div><br><br>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h3>선택한 감성 ⭐{{r_keyword}}⭐과 어울리는 가게</h3><br>
-        {{r_result}}    
-        {% comment %} views.py {% endcomment %}
-        {% comment %} r/p각각 따로 {% endcomment %}
-        <br>###############<br>
-    {% if r_result %}
-    {{ r_result | json_script:'jsonData'}}
-    <script type = "text/javascript"> 
-        
-        const placeData = JSON.parse(document.getElementById('jsonData').textContent);
-        for (var key2 in placeData){
-            document.write(placeData[key2]+"<br>");
-        }
-    </script>
-    {% endif %}
+    <form action="{% url 'main2' %}" method="POST" enctype="multipart/form-data" class="form1">
+    {% csrf_token %}
+    <div class="all_box">
+        {% if r_result %}
+            <h3>선택한 감성 ⭐{{r_keyword}}⭐과 어울리는 가게</h3><br>
 
-    {% if p_result %}
-    {{ p_result | json_script:'jsonData'}}
-    <script type = "text/javascript"> 
-        
-        const placeData = JSON.parse(document.getElementById('jsonData').textContent);
-        for (var key2 in placeData){
-            document.write(placeData[key2]+"<br>");
-        }
-    </script>
-    {% endif %}
-    
+        <div class="box1">
+            {{place_name}}
+        </div>
+            <br>###############<br>
+        {% comment %}         
+            {{ r_result | json_script:'jsonData'}}
+            <script type = "text/javascript"> 
+                const placeData = JSON.parse(document.getElementById('jsonData').textContent);
+                for (var key2 in placeData){
+                    document.write(placeData[key2]+"<br>");
+                }
+            </script> {% endcomment %}
+        {% endif %}
+
+        {% if p_result %}
+        <h3>선택한 감성 ⭐{{p_keyword}}⭐과 어울리는 가게</h3><br>
+             
+        <div class="box1">
+            {{p_img}} <br>
+            {{place_name}}<br>
+            {{p_category}}<br>
+        <input type='submit' name="place_name" value={{place_name}}>
+
+        </div>
+        <div>{{p_result}}</div>  
+        {% endif %}
+
+    </div>
+</form>
 
 
-        {% comment %}  {% endcomment %}
+
+
+
         <div class="all_box">
             <!-- 나중에 input버튼에 box123클래스 부여해서 버튼모양 잡기 -->
             {% comment %} 낮밤 datetime {% endcomment %}
@@ -86,7 +97,7 @@
             <a href="{% url 'main' %}" class="more_btn"> 🙄🤔 마음에 드는 장소가 없어요</a>
         </div>
 
-    </form>
+    
 
 </body>
 

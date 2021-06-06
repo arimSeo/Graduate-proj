@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import RestaurantList
+from .models import RestaurantList, Recommend
 from django.contrib.auth.models import User
 # from accounts.models import MyUser
 from django.conf import settings
@@ -17,14 +17,14 @@ def gamseong(request):
     print(user)
     # 각 cluster별 랜덤으로
     # 이거를 모델에 넣어서 pnu퀴즈처럼 꺼내는 느낌?!?or
-    r_mood1=['소소한', '정갈한', '건강한', '가벼운', '알록달록한', '부드러운']
-    r_mood2=['숨은', '이탈리아감성', '루프탑', '벨기에감성']
-    r_mood3=['고급스러운', '어두운', '비쥬얼좋은', '빈티지한']
-    r_mood4=['푸짐한', '다이어트', '진짜의', '유명한', '학생감성', '복잡한', '소박한']
-    r_mood5=['따뜻한', '아늑한', '포근한', '아담한', '감성있는', '뷰가좋은', '캐쥬얼한']
-    r_mood6=['동남아감성', '활기찬', '신기한']
-    r_mood7=['예쁜', '빛나는', '사랑스러운', '클래식한', '청량한', '잔잔한', '베이지톤의']
-    r_mood8=['오래된', '옛날의', '시끄러운']
+    r_mood1=['힙한', '레트로감성', '음악이있는', '트렌디한', '세련된']
+    r_mood2=['귀여운', '밝은', '아기자기한한', '러블리한', '화이트톤']
+    r_mood3=['따뜻한', '정갈한', '아담한', '일본감성', '아늑한', '도란도란']
+    r_mood4=['친절한', '쾌적한', '심플한', '편한', '즐거운', '색다른']
+    r_mood5=['정감있는', '전통있는', '옛날의']
+    r_mood6=['시끌벅적한', '활기찬', '그리운']
+    r_mood7=['청결한', '새로운', '소담한', '건강한']
+    r_mood8=['모던한', '감각적인', '주택개조']
 
     p_mood1=['머리가복잡해','답답해','우울해', '기분전환', '행복해', '신나', '즐거워', '평온해', '무료해', '센치해', '지쳐', '에너지넘쳐']
     p_mood2=['만족스러워', '새로워', '설레', '감성터질때']
@@ -68,15 +68,6 @@ def gamseong(request):
 #2. 감성 request 전달 받아서 연결!!!!!!!!!(html상 문제다-파라미터 받기)
 from . import testAPI
 def test(request):
-    # if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
-    #     if request.POST['r_gam']:
-    #         r_gam=request.POST['r_gam']
-
-    #     if request.POST['p_gam']:
-    #         p_gam=request.POST['p_gam']
-    # post로 받아서context(파라미터값)에 담아서 전달!
-    # r_keyword=request.POST['r_gam']     #식당감성 선택시
-    # p_keyword=request.POST['p_gam']
     r_keyword='인테리어예쁜'
     result= testAPI.find_sim_rest(r_keyword)  #result1,2로 각각 r/pmood알고리즘
 
@@ -84,33 +75,64 @@ def test(request):
 
 ##
 from . import recommend_r, recommend_p
-import json
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+# def main(request,rest_id):
 def main(request):
     restaurant= RestaurantList.objects.all()
-    # 일단 타입별로 모델에서 다불러오고(filter) <-이거는 db로 자동 알고리즘 돌려서 id값이나 이름으로 불러서! 
-    food=RestaurantList.objects.filter(category="식당")
-    cafe=RestaurantList.objects.filter(category="카페")
-    alchol=RestaurantList.objects.filter(category="술집")
-    # 감성value받아서 키워드 유사 + (감성이름을 pk로-그럼 모델만들어야하나,,)
-    # 식당, 카페, 술집 각각의 모델??? 아님 filter(r_type="카페")인거를 각각!
+    # rest= RestaurantList.objects.get(id=rest_id)
+    # idx=Recommend.objects.filter(rest_id=rest_id)
 
-    # if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
-    if request.POST['r_gam']:
+    # r_gam이면~/p_gam이면~ ->form두개로!!!!
+    context = dict()
+    resultCafe={}
+    resultFood={}
+    resultBar={}
+    try: 
         r_keyword=request.POST['r_gam']
         print(r_keyword)
-    # if request.POST['p_gam']:
-    #     p_keyword=request.POST['p_gam']
-    #     print(p_keyword)
+        r_result= recommend_r.find_sim_rest(r_keyword) #df형식은 못가져와!!->json으로 
+        context['r_keyword']=r_keyword
+        context['r_result']=r_result
+    except: 
+        p_keyword=request.POST['p_gam']
+        print(p_keyword)
+        p_result= recommend_p.find_sim_rest(p_keyword)
+        context['p_keyword']=p_keyword
+        context['p_result']=p_result
 
-    r_result= recommend_r.find_sim_rest(r_keyword)   #df형식은 못가져와!!->json으로 
-    # p_result= recommend_p.find_sim_rest(p_keyword)
-    context={"r_keyword":r_keyword,"r_result":r_result}
+        for i,v in p_result.items():    #items() : object받음
+        # if (v["category"] =="카페"):
+            resultCafe[v["name"]] = {'이름': v["name"] , '종류':v["category"], '사진':v["dayimg"]}
+            # resultCafe[v['name']]==
+            place_name =v['name']      #키값이 중복되서 마지막 애만 뜸.
+            p_category =v['category']
+            p_img= v['dayimg']
+        
+        context['resultCafe']=resultCafe
+        context['place_name']=place_name
+        context['p_category']=p_category
+        context['p_img']=p_img
+
+        print(resultCafe)
+        print(v["name"], v["category"], v['dayimg'])
+
+    #키-value로 받아서 뷰에서 변수로 넣고 html에서 input에 {{식당name}}로 받아서 그다음에 전달-감성키워드처럼
+   
     return render(request,'main.html',context)
 
+from . import recommend_main2
 def main2(request):
     restaurant2= RestaurantList.objects.all()
-    # food2= RestaurantList.objects.filter(r_type='식당')
-    # cafe2= RestaurantList.objects.filter(r_type='카페')
-    # alchol2= RestaurantList.objects.filter(r_type='술집')
-    context={"restaurant2":restaurant2}
+
+    if request.POST:
+        place_name=request.POST['place_name']
+    recommend_list= recommend_main2.find_sim_rest(place_name,11)
+
+   
+    context={"restaurant2":restaurant2,"place_name":place_name, "recommend_list":recommend_list}
     return render(request,'main2.html',context)
+
+
+def detail(request):
+    return render(request,'detail.html')

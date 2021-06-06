@@ -8,7 +8,7 @@ import os
 # from datetime import datetime
 # print('START TIME : ',str(datetime.now())[10:19] )  #속도 측정용
 
-csv_path = os.path.join(os.path.dirname(__file__), 'r_dis_words.csv')
+csv_path = os.path.join(os.path.dirname(__file__), 'p_dis_words.csv')
 simpmood=pd.read_csv(csv_path)
 
 
@@ -71,7 +71,7 @@ def find_sim_rest(key_name):
   #sorted_ind 인자로 입력된 key_sim_sorted_ind 객체에서
   #유사도 순으로 top_n개의 index 추출
   name_index = name_key.index.values
-  similar_indexes = pmood_sim_sorted_ind[name_index, :10]   # 10개 
+  similar_indexes = pmood_sim_sorted_ind[name_index, :20]   # 10개 
 
   #top_n 2차원이므로 index 로 사용하기위해 array로 바꿔줘야 함.
   # print(similar_indexes)
@@ -79,8 +79,8 @@ def find_sim_rest(key_name):
   print(similar_indexes)
   idx= rest.iloc[similar_indexes]
   print(idx)
-  new_data2=json.loads(idx.to_json(orient='index',force_ascii=False))  
+  result=json.loads(idx.to_json(orient='index',force_ascii=False))  
 
-  return new_data2
+  return result
 
 

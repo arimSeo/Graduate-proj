@@ -20,14 +20,22 @@
         {% comment %} {% for i in restaurant2 %} {% endcomment %}
             
             {% comment %} 포토,가게이름 id번호순서대로 {% endcomment %}
-            {% for i in restaurant2 %}
+        <div>
+            🍴{{place_name}}🍴와(과) 유사한 감성의 식당추천 <br><br>
+        </div>
+        <div>
+        test#<br>
+        {{recommend_list}}
+
+        </div>
+   
             <div class="box1">
-                <div><img src="{{restaurant2.dayimg}}"/></div>
-                <div>name: {{restaurant2.name}}</div>
-                <div>type: {{restaurant2.category}}</div>
+                <div><img src=""/></div>
+                <div>name: </div>
+                <div>type: </div>
                 추천10개
             </div>
-            {% endfor %}
+      
             
         </div>
 
