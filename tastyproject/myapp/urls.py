@@ -2,6 +2,7 @@ from django.urls import path
 from .views import index, gamseong, main, main2,detail, test
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
 
 urlpatterns=[
     path('', index, name="index"),
@@ -11,4 +12,4 @@ urlpatterns=[
     path('main2/',main2, name="main2"),
     path('test/',test, name="test"),
     path('detail/',detail, name="detail")
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, serve,document_root=settings.MEDIA_ROOT)

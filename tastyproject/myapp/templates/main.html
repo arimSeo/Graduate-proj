@@ -19,40 +19,58 @@
     </div> {% endcomment %}
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px" class="logo">
     <div class="h1">이런 가게 어때요?</div>
-    <br>
-        <div>이 감성의 더 많은 가게를 추천 받고 싶다면 아래 사진?추가버튼을 클릭해 주세요!</div><br><br>
-
+    
+       
     <form action="{% url 'main2' %}" method="POST" enctype="multipart/form-data" class="form1">
     {% csrf_token %}
     <div class="all_box">
         {% if r_result %}
-            <h3>선택한 감성 ⭐{{r_keyword}}⭐과 어울리는 가게</h3><br>
+            <h3>선택한 감성 ⭐{{r_keyword}}⭐와 어울리는 가게</h3><br>
+            <div>👀이 감성의 더 많은 가게를 추천받고 싶다면?<br> 식당 이름이 적힌 주황색 버튼을 눌러주세요!👇</div><br>
 
-        <div class="box1">
-            {{place_name}}
-        </div>
+            <div class="all_box">
+            <div class="box1">
+                <img src="{% get_static_prefix %}image/{{p_img}}" class="imgimg"><br><br>
+                🍴 {{place_name}} ({{p_category}})<br><br>
+                종류: {{p_genre}}<br><br>
+            <div class="name1">
+            <input type='submit' class="name_btn" name="place_name" value={{place_name}}> 와(과) 유사한 가게 더보기!
+            </div>
+            </div>
+            <div class="box2">
+            aaaaaaa
+            </div>
+            <div class="box3">
+            aaaaaa
+            </div>
+            </div>
             <br>###############<br>
-        {% comment %}         
-            {{ r_result | json_script:'jsonData'}}
-            <script type = "text/javascript"> 
-                const placeData = JSON.parse(document.getElementById('jsonData').textContent);
-                for (var key2 in placeData){
-                    document.write(placeData[key2]+"<br>");
-                }
-            </script> {% endcomment %}
+            <div>{{r_result}}</div>  
+       
         {% endif %}
 
         {% if p_result %}
-        <h3>선택한 감성 ⭐{{p_keyword}}⭐과 어울리는 가게</h3><br>
-             
-        <div class="box1">
-            {{p_img}} <br>
-            {{place_name}}<br>
-            {{p_category}}<br>
-        <input type='submit' name="place_name" value={{place_name}}>
+            <h3>선택한 감성 ⭐{{p_keyword}}⭐과(와) 어울리는 가게</h3><br>
+            <div>👀이 감성의 더 많은 가게를 추천받고 싶다면?<br> 식당 이름이 적힌 주황색 버튼을 눌러주세요!👇</div><br>
 
-        </div>
-        <div>{{p_result}}</div>  
+            <div class="all_box">    
+            <div class="box1">
+               <img src="{% get_static_prefix %}image/{{p_img}}" class="imgimg"><br><br>
+                🍴 {{place_name}} ({{p_category}})<br><br>
+                종류: {{p_genre}}<br><br>
+                <div class="name1">
+                <input type='submit' class="name_btn" name="place_name" value={{place_name}}> 와(과) 유사한 가게 더보기!
+                </div>
+                
+            </div>
+            <div class="box2">
+            aaaaaaa
+            </div>
+            <div class="box3">
+            aaaaaa
+            </div>
+            </div>
+            <div>{{p_result}}</div>  
         {% endif %}
 
     </div>
@@ -93,8 +111,7 @@
 
         </div>
         <div class="more">
-        감성선택 페이지에서 버튼 css수정하고 복붙
-            <a href="{% url 'main' %}" class="more_btn"> 🙄🤔 마음에 드는 장소가 없어요</a>
+            <button onClick="window.location.reload()" class="more_btn">🙄🤔 마음에 드는 장소가 없어요</button>
         </div>
 
     

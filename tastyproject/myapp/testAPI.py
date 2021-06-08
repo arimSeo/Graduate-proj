@@ -5,7 +5,7 @@ import pymysql
 import os
 #감성키워드 ~~~~~      #요고를 디비랑 장고 연결로
 
-# from datetime import datetime
+# from datetime import datetime 
 # print('START TIME : ',str(datetime.now())[10:19] )  #속도 측정용
 
 csv_path = os.path.join(os.path.dirname(__file__), 'r_dis_words.csv')
@@ -16,7 +16,7 @@ simrmood=pd.read_csv(csv_path)
 conn = pymysql.connect(host='tasty.cqca6sggc1nx.ap-northeast-2.rds.amazonaws.com',user='seo', password='tasty98!', db='tasty-db', charset='utf8')
 cursor= conn.cursor()
 
-sql="select idx,dayimg,name,category,genre,rmood from myapp_restaurantlist"   #workbench에 있는 테이블이름 그대로
+sql="select idx,dayimg,name,category,genre,rmood from myapp_restaurant"   #workbench에 있는 테이블이름 그대로
 cursor.execute(sql)
 # result = pd.read_sql_query(sql,conn)    #=rest???
 cursor.fetchone()  #빼도될듯

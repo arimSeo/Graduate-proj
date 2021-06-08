@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recommend, RestaurantList
+from .models import Restaurant
 # Register your models here.
-admin.site.register(Recommend)
-admin.site.register(RestaurantList)
+# admin.site.register(Recommend)
+admin.site.register(Restaurant)

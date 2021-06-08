@@ -7,7 +7,7 @@ import pymysql
 conn = pymysql.connect(host='tasty.cqca6sggc1nx.ap-northeast-2.rds.amazonaws.com',user='seo', password='tasty98!', db='tasty-db', charset='utf8')
 cursor= conn.cursor()
 
-sql="select * from myapp_restaurantlist"   #workbench에 있는 테이블이름 그대로
+sql="select * from myapp_restaurant"   #workbench에 있는 테이블이름 그대로
 cursor.execute(sql)
 cursor.fetchall()  #빼도될듯
 rest=pd.read_sql(sql,conn)   #dataframe으로 만들어

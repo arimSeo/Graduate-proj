@@ -16,7 +16,7 @@ simpmood=pd.read_csv(csv_path)
 conn = pymysql.connect(host='tasty.cqca6sggc1nx.ap-northeast-2.rds.amazonaws.com',user='seo', password='tasty98!', db='tasty-db', charset='utf8')
 cursor= conn.cursor()
 
-sql="select idx,dayimg,name,category,genre,pmood from myapp_restaurantlist"   #workbench에 있는 테이블이름 그대로
+sql="select idx,dayimg,name,category,genre,pmood from myapp_restaurant"   #workbench에 있는 테이블이름 그대로
 cursor.execute(sql)
 # result = pd.read_sql_query(sql,conn)    #=rest???
 cursor.fetchone()  #빼도될듯

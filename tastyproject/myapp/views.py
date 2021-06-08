@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import RestaurantList, Recommend
+from .models import Restaurant
 from django.contrib.auth.models import User
 # from accounts.models import MyUser
 from django.conf import settings
@@ -79,21 +79,40 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 # def main(request,rest_id):
 def main(request):
-    restaurant= RestaurantList.objects.all()
-    # rest= RestaurantList.objects.get(id=rest_id)
+    restaurant= Restaurant.objects.all()
+    # rest= Restaurant.objects.get(id=rest_id)
     # idx=Recommend.objects.filter(rest_id=rest_id)
 
     # r_gam이면~/p_gam이면~ ->form두개로!!!!
     context = dict()
-    resultCafe={}
-    resultFood={}
-    resultBar={}
+    # resultCafe={}
+    # resultFood={}
+    # resultBar={}
     try: 
         r_keyword=request.POST['r_gam']
         print(r_keyword)
         r_result= recommend_r.find_sim_rest(r_keyword) #df형식은 못가져와!!->json으로 
         context['r_keyword']=r_keyword
         context['r_result']=r_result
+
+        # 랜덤 선택 3개
+        # 3개를 리스트나 딕셔너리에 추가
+        # 해당 객체를 context로 템플리스오 전송
+        # 템플릿에서 해당 객체의 인덱스나 키를 사용해서 추출
+        # 화면에 출력
+
+        for i,v in r_result.items():    #items() : object받음
+            # resultCafe[v["name"]] = {'이름': v["name"] , '종류':v["category"], '사진':v["dayimg"]}
+            place_name =v['name']      #키값이 중복되서 마지막 애만 뜸.
+            p_category =v['category']
+            p_img= v['dayimg']
+            p_genre=v['genre']
+        
+        # context['resultCafe']=resultCafe
+        context['place_name']=place_name
+        context['p_category']=p_category
+        context['p_img']=p_img
+        context['p_genre']=p_genre
     except: 
         p_keyword=request.POST['p_gam']
         print(p_keyword)
@@ -102,19 +121,19 @@ def main(request):
         context['p_result']=p_result
 
         for i,v in p_result.items():    #items() : object받음
-        # if (v["category"] =="카페"):
-            resultCafe[v["name"]] = {'이름': v["name"] , '종류':v["category"], '사진':v["dayimg"]}
-            # resultCafe[v['name']]==
+            # resultCafe[v["name"]] = {'이름': v["name"] , '종류':v["category"], '사진':v["dayimg"]}
             place_name =v['name']      #키값이 중복되서 마지막 애만 뜸.
             p_category =v['category']
             p_img= v['dayimg']
+            p_genre=v['genre']
+            #이미지 필드 가져오는거 여기서 모델에서 가져와서 연결-이미지 미디어가 있는 주소
         
-        context['resultCafe']=resultCafe
+        # context['resultCafe']=resultCafe
         context['place_name']=place_name
         context['p_category']=p_category
         context['p_img']=p_img
+        context['p_genre']=p_genre
 
-        print(resultCafe)
         print(v["name"], v["category"], v['dayimg'])
 
     #키-value로 받아서 뷰에서 변수로 넣고 html에서 input에 {{식당name}}로 받아서 그다음에 전달-감성키워드처럼
@@ -123,7 +142,8 @@ def main(request):
 
 from . import recommend_main2
 def main2(request):
-    restaurant2= RestaurantList.objects.all()
+    restaurant2= Restaurant.objects.all()
+    # restaurant1=get_object_or_404(Restaurant,idx=idx)
 
     if request.POST:
         place_name=request.POST['place_name']
@@ -135,4 +155,6 @@ def main2(request):
 
 
 def detail(request):
+    detail_contents=Restaurant.objects.all()
+    # detail_contents=Restaurant.objects.get(idx=idx)
     return render(request,'detail.html')

@@ -12,24 +12,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from .forms import RegisterForm
-# from myapp.models import Recommend
 from django.conf import settings
 
-
-# def login(request):
-#     context={}
-#     username=request.POST["username"]
-#     password=request.POST["password1"]
-#     user = authenticate(request, username=username, password=password)
-#     if user is not None:
-#         login(request,user)
-#         return redirect('gamseong',user.pk)
-#     else:
-#         context['message']="잘못된 아이디/비밀번호 입니다."
-#         return render(request, 'registration/login.html', context)
-
-# def login(request):
-#     return render(request, 'login.html')
 
 def register(request):
     context={}
@@ -51,14 +35,6 @@ def register(request):
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save() 
             return redirect('accounts:login')
-            # try: 
-            #     cleaned_data = super().clean()
-            #     username = cleaned_data.get('username')
-            #     User.objects.get(pk=username) 
-            #     sel=self.add_error('username', '이미 가입된 이메일입니다.')
-            # except:
-            #     pass
-
         else:
             message="✔ 비밀번호가 일치하지 않습니다."
             context= {'message':message,'register_form':register_form}
@@ -71,16 +47,14 @@ def register(request):
 #소셜로그인
 
 def kakaoLogin(request):
-    # _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
-    _restApiKey='81c8ef79f775f47d6e2cc9c8eef60de8'
+    _restApiKey = settings.KAKAO_REST_API_KEY # 입력필요
     _redirectUrl = 'http://127.0.0.1:8000/gamseong/'
     _url = f'https://kauth.kakao.com/oauth/authorize?client_id={_restApiKey}&redirect_uri={_redirectUrl}&response_type=code'
     return redirect(_url)
 
 def kakaoLoginRedirect(request):
     _qs = request.GET['code']
-    # _restApiKey = os.settings.get.KAKAO_REST_API_KEY # 입력필요
-    _restApiKey='81c8ef79f775f47d6e2cc9c8eef60de8'
+    _restApiKey = os.settings.get.KAKAO_REST_API_KEY # 입력필요
     _redirect_uri = 'http://127.0.0.1:8000/gamseong/'
     _url = f'https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={_restApiKey}&redirect_uri={_redirect_uri}&code={_qs}'
     _res = request.post(_url)

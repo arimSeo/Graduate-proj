@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls.static import static
 from .views import login, register, kakaoLoginRedirect, kakaoLogin, kakaoLogout,kakaoLoginRedirect
 from django.contrib.auth import views as auth_views  #auth_views라고 이름->장고에 있는 기존 LoginView이용함
 
