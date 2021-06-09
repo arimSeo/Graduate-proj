@@ -153,9 +153,9 @@ body{
         background-color: #9a6b3e25;
         padding:3% 6% 3% 6%;
         color:white;
+        cursor: pointer;
     }
     .more_btn:hover{
-        margin-bottom: 20%;
         font-size: 1.1rem;
     }
     .p{

@@ -18,100 +18,105 @@
         <img src="{% static 'image/load22.gif' %}" alt="loading" class="loading_img">
     </div> {% endcomment %}
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px" class="logo">
-    <div class="h1">이런 가게 어때요?</div>
+    <div class="h1">당신의 감성맞춤 맛집</div>
     
        
     <form action="{% url 'main2' %}" method="POST" enctype="multipart/form-data" class="form1">
     {% csrf_token %}
-    <div class="all_box">
         {% if r_result %}
-            <h3>선택한 감성 ⭐{{r_keyword}}⭐와 어울리는 가게</h3><br>
-            <div>👀이 감성의 더 많은 가게를 추천받고 싶다면?<br> 식당 이름이 적힌 주황색 버튼을 눌러주세요!👇</div><br>
+            <h3>선택한 감성 ⭐{{r_keyword}}⭐와(과) 어울리는 가게</h3><br>
+            <div>👀이 감성의 더 많은 가게를 추천받고 싶다면?<br> 박스 안 식당이름이 적힌 주황색 버튼을 눌러주세요!👇</div><br>
 
-            <div class="all_box">
+        <div class="all_box">
             <div class="box1">
-                <img src="{% get_static_prefix %}image/{{p_img}}" class="imgimg"><br><br>
-                🍴 {{place_name}} ({{p_category}})<br><br>
-                종류: {{p_genre}}<br><br>
-            <div class="name1">
-            <input type='submit' class="name_btn" name="place_name" value={{place_name}}> 와(과) 유사한 가게 더보기!
-            </div>
+                <img src="{% get_static_prefix %}image/{{img1}}" class="imgimg"><br><br>
+                🍴 {{name1}} ({{category1}})<br><br>
+                <b>종류:</b> {{genre1}}<br><br>
+                <b>주소:</b> {{addr1}}<br><br>
+                <b>전화번호:</b> {{phone1}}<br><br>
+                <b>감성:</b> {{rmood1}}<br><br>
+                💛 <b>{{dayornight1}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name1}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div>
             <div class="box2">
-            aaaaaaa
+                <img src="{% get_static_prefix %}image/{{img2}}" class="imgimg"><br><br>
+                🍴 {{name2}} ({{category2}})<br><br>
+                <b>종류:</b> {{genre2}}<br><br>
+                <b>주소:</b> {{addr2}}<br><br>
+                <b>전화번호:</b> {{phone2}}<br><br>
+                <b>감성:</b> {{rmood2}}<br><br>
+                💛 <b>{{dayornight2}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name2}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div>
             <div class="box3">
-            aaaaaa
+                <img src="{% get_static_prefix %}image/{{img3}}" class="imgimg"><br><br>
+                🍴 {{name3}} ({{category3}})<br><br>
+                <b>종류:</b> {{genre3}}<br><br>
+                <b>주소:</b> {{addr3}}<br><br>
+                <b>전화번호:</b> {{phone3}}<br><br>
+                <b>감성:</b> {{rmood3}}<br><br>
+                💛 <b>{{dayornight3}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name3}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div>
-            </div>
-            <br>###############<br>
-            <div>{{r_result}}</div>  
-       
+        </div>
         {% endif %}
 
         {% if p_result %}
             <h3>선택한 감성 ⭐{{p_keyword}}⭐과(와) 어울리는 가게</h3><br>
-            <div>👀이 감성의 더 많은 가게를 추천받고 싶다면?<br> 식당 이름이 적힌 주황색 버튼을 눌러주세요!👇</div><br>
+            <div>👀이 감성의 더 많은 가게를 추천받고 싶다면?<br> 박스 안 식당이름이 적힌 주황색 버튼을 눌러주세요!👇</div><br>
 
             <div class="all_box">    
-            <div class="box1">
-               <img src="{% get_static_prefix %}image/{{p_img}}" class="imgimg"><br><br>
-                🍴 {{place_name}} ({{p_category}})<br><br>
-                종류: {{p_genre}}<br><br>
-                <div class="name1">
-                <input type='submit' class="name_btn" name="place_name" value={{place_name}}> 와(과) 유사한 가게 더보기!
+                <div class="box1">
+                    <img src="{% get_static_prefix %}image/{{img1}}" class="imgimg"><br>
+                    <h3>🍴 {{name1}} ({{category1}})</h3>
+                    <b>종류:</b> {{genre1}}<br><br>
+                    <b>주소:</b> {{addr1}}<br><br>
+                    <b>전화번호:</b> {{phone1}}<br><br>
+                    <b>감성:</b> {{rmood1}}<br><br>
+                    💛 <b>{{dayornight1}}</b> 가기 좋아요!<br><br>
+                    <div class="name1">
+                        <input type='submit' class="name_btn" name="place_name" value={{name1}}> 와(과) 유사한 가게 추천받기!
+                    </div>
+                    
                 </div>
-                
+                <div class="box2">
+                    <img src="{% get_static_prefix %}image/{{img2}}" class="imgimg"><br>
+                    <h3>🍴 {{name2}} ({{category2}})</h3>
+                    <b>종류:</b> {{genre2}}<br><br>
+                    <b>주소:</b> {{addr2}}<br><br>
+                    <b>전화번호:</b> {{phone2}}<br><br>
+                    <b>감성:</b> {{rmood2}}<br><br>
+                    💛 <b>{{dayornight2}}</b> 가기 좋아요!<br><br>
+                    <div class="name1">
+                        <input type='submit' class="name_btn" name="place_name" value={{name2}}> 와(과) 유사한 가게 추천받기!
+                    </div>
+                </div>
+                <div class="box3">
+                    <img src="{% get_static_prefix %}image/{{img3}}" class="imgimg"><br>
+                    <h3>🍴 {{name3}} ({{category3}})</h3>
+                    <b>종류:</b> {{genre3}}<br><br>
+                    <b>주소:</b> {{addr3}}<br><br>
+                    <b>전화번호:</b> {{phone3}}<br><br>
+                    <b>감성:</b> {{rmood3}}<br><br>
+                    💛 <b>{{dayornight3}}</b> 가기 좋아요!<br><br>
+                    <div class="name1">
+                        <input type='submit' class="name_btn" name="place_name" value={{name3}}> 와(과) 유사한 가게 추천받기!
+                    </div>
+                </div>
             </div>
-            <div class="box2">
-            aaaaaaa
-            </div>
-            <div class="box3">
-            aaaaaa
-            </div>
-            </div>
-            <div>{{p_result}}</div>  
         {% endif %}
-
-    </div>
 </form>
-
-
-
-
-
-        <div class="all_box">
-            <!-- 나중에 input버튼에 box123클래스 부여해서 버튼모양 잡기 -->
-            {% comment %} 낮밤 datetime {% endcomment %}
-            {% if food %}
-            <div class="box1">
-            {% comment %} id값을 불러와서 ~? {% endcomment %}
-                <div><img src="{{food.dayimg}}"/></div>
-                <div>name: {{food.name}}</div>
-                <div>type: {{food.category}}</div>
-                식당박스
-            </div>
-            {% endif %}
-            {% if cafe %}
-            <div class="box2">
-                <div><img src="{{restaurant.dayimg}}"/></div>
-                <div>name: {{restaurant.name}}</div>
-                <div>type: {{restaurant.category}}</div>
-                카페 박스
-            </div>
-            {% endif %}
-            {% if alchol %}
-            <div class="box3">
-            <div><img src="{{restaurant.dayimg}}"/></div>
-            <div>name: {{restaurant.name}}</div>
-            <div>type: {{restaurant.category}}</div>
-                술집 박스
-            </div>
-            {% endif %}
-
+        <div>
+            <button onClick="window.location.reload()" class="more_btn1">🙄🤔 마음에 드는 장소가 없어요</button>
         </div>
         <div class="more">
-            <button onClick="window.location.reload()" class="more_btn">🙄🤔 마음에 드는 장소가 없어요</button>
+            <a href="{% url 'gamseong' %}" class="more_btn">⭐ 다른 감성 선택하기</a>
         </div>
 
     

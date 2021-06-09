@@ -7,39 +7,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/main2.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <title>추천추천</title>
 </head>
 
 <body>
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
-    <div class="h1">당신의 감성맞춤 맛집</div>
+    <div class="h1">이런 가게는 어때요?</div>
     <br>
     <form action="" method="POST">
         {% csrf_token %}
+        <div>
+            <h3>🍴{{place_name}}🍴와(과) 유사한 감성의 식당추천 </h3><h2>🏆TOP 10🏆</h2>
+        </div>
+        {% if recommend_list %}
         <div class="all_box">
-        {% comment %} {% for i in restaurant2 %} {% endcomment %}
-            
-            {% comment %} 포토,가게이름 id번호순서대로 {% endcomment %}
-        <div>
-            <h3>🍴{{place_name}}🍴와(과) 유사한 감성의 식당추천</h3> <br><br>
-        </div>
-        <div>
-        test#<br>
-        {{recommend_list}}
-
-        </div>
-   
-            <div class="box1">
-                <div><img src=""/></div>
-                <div>name: </div>
-                <div>type: </div>
-                추천10개
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img1}}" class="imgimg"><br>
+                <h3>🍴 {{name1}} ({{category1}})</h3>
+                <b>종류:</b> {{genre1}}<br><br>
+                <b>주소:</b> {{addr1}}<br><br>
+                <b>전화번호:</b> {{phone1}}<br><br>
+                <b>감성:</b> {{rmood1}}<br><br>
+                💛 <b>{{dayornight1}}</b> 가기 좋아요!
             </div>
-      <br><a href="{% url 'detail' %}">상세정보</a>
-            
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img2}}" class="imgimg"><br>
+                <h3>🍴 {{name2}} ({{category2}})</h3>
+                <b>종류:</b> {{genre2}}<br><br>
+                <b>주소:</b> {{addr2}}<br><br>
+                <b>전화번호:</b> {{phone2}}<br><br>
+                <b>감성:</b> {{rmood2}}<br><br>
+                💛 <b>{{dayornight2}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img3}}" class="imgimg"><br>
+                <h3>🍴 {{name3}} ({{category3}})</h3>
+                <b>종류:</b> {{genre3}}<br><br>
+                <b>주소:</b> {{addr3}}<br><br>
+                <b>전화번호:</b> {{phone3}}<br><br>
+                <b>감성:</b> {{rmood3}}<br><br>
+                💛 <b>{{dayornight3}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img4}}" class="imgimg"><br>
+                <h3>🍴 {{name4}} ({{category4}})</h3>
+                <b>종류:</b> {{genre4}}<br><br>
+                <b>주소:</b> {{addr4}}<br><br>
+                <b>전화번호:</b> {{phone4}}<br><br>
+                <b>감성:</b> {{rmood4}}<br><br>
+                💛 <b>{{dayornight4}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img5}}" class="imgimg"><br>
+                <h3>🍴 {{name5}} ({{category5}})</h3>
+                <b>종류:</b> {{genre5}}<br><br>
+                <b>주소:</b> {{addr5}}<br><br>
+                <b>전화번호:</b> {{phone5}}<br><br>
+                <b>감성:</b> {{rmood5}}<br><br>
+                💛 <b>{{dayornight5}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img6}}" class="imgimg"><br>
+                <h3>🍴 {{name6}} ({{category6}})</h3>
+                <b>종류:</b> {{genre6}}<br><br>
+                <b>주소:</b> {{addr6}}<br><br>
+                <b>전화번호:</b> {{phone6}}<br><br>
+                <b>감성:</b> {{rmood6}}<br><br>
+                💛 <b>{{dayornight6}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img7}}" class="imgimg"><br>
+                <h3>🍴 {{name7}} ({{category7}})</h3>
+                <b>종류:</b> {{genre7}}<br><br>
+                <b>주소:</b> {{addr7}}<br><br>
+                <b>전화번호:</b> {{phone7}}<br><br>
+                <b>감성:</b> {{rmood7}}<br><br>
+                💛 <b>{{dayornight7}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img8}}" class="imgimg"><br>
+                <h3>🍴 {{name8}} ({{category8}})</h3>
+                <b>종류:</b> {{genre8}}<br><br>
+                <b>주소:</b> {{addr8}}<br><br>
+                <b>전화번호:</b> {{phone8}}<br><br>
+                <b>감성:</b> {{rmood8}}<br><br>
+                💛 <b>{{dayornight8}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img9}}" class="imgimg"><br>
+                <h3>🍴 {{name9}} ({{category9}})</h3>
+                <b>종류:</b> {{genre9}}<br><br>
+                <b>주소:</b> {{addr9}}<br><br>
+                <b>전화번호:</b> {{phone9}}<br><br>
+                <b>감성:</b> {{rmood9}}<br><br>
+                💛 <b>{{dayornight9}}</b> 가기 좋아요!
+            </div> 
+            <div class="box">
+                <img src="{% get_static_prefix %}image/{{img10}}" class="imgimg"><br>
+                <h3>🍴 {{name10}} ({{category10}})</h3>
+                <b>종류:</b> {{genre10}}<br><br>
+                <b>주소:</b> {{addr10}}<br><br>
+                <b>전화번호:</b> {{phone10}}<br><br>
+                <b>감성:</b> {{rmood10}}<br><br>
+                💛 <b>{{dayornight10}}</b> 가기 좋아요!
+            </div> 
         </div>
-
-    </form>
+        {% endif %}
+    </form>   
+    <br><br><br>
+    <script>
+        Kakao.init('7333debfadc318a85ebd89f2f8f7aa9b');
+        function sendLinkKakao(){
+            Kakao.Link.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: 'TASTY',
+                    description: '감성기반 부산대 맛집추천 서비스🍝',
+                    imageUrl: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbnD9pH%2Fbtq6RaP7Dwl%2FQK14prE4Db11fHkPhVIdC0%2Fimg.jpg',
+                    link: {
+                    mobileWebUrl: 'http://127.0.0.1:8000/',
+                    webUrl: 'http://127.0.0.1:8000/'
+                    }
+                },
+                buttons: [       
+                    {
+                    title: '부산대에서 뭐먹지?🤗',
+                    link: {
+                        mobileWebUrl: 'http://127.0.0.1:8000/',
+                        webUrl: 'http://127.0.0.1:8000/'
+                    }
+                    }
+                ]
+            }); 
+        };
+    </script>
+    <div>
+    🧡<a href="{% url 'detail' %}" class="btn">추천결과 평가하기</a>&nbsp;&nbsp;
+    💛<a href="{% url 'gamseong' %}" class="btn">다른감성 선택하기</a><br><br>
+    </div>
+    <span class="sociallink ml-1">
+        <a href="javascript:sendLinkKakao()" id="kakao-link-btn" title="카카오톡으로 공유" style="text-decoration:none; color:black; margin-left: 1%;">
+            <img src="{% static 'image/kakaos2.png' %}" class="kakaimg" width="25%" alt="Kakaotalk" style="margin-bottom:-0.3%;">
+        </a>
+    </span><br><br><br><br>
 </body>
 
 </html>

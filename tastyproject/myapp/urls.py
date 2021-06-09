@@ -7,7 +7,6 @@ from django.views.static import serve
 urlpatterns=[
     path('', index, name="index"),
     path('gamseong/', gamseong, name="gamseong"),
-    # path('gamseong/<int:pk>', gamseong, name="gamseong"),
     path('main/', main, name="main"),
     path('main2/',main2, name="main2"),
     path('test/',test, name="test"),

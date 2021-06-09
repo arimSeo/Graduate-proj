@@ -1,24 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Restaurant
 from django.contrib.auth.models import User
-# from accounts.models import MyUser
 from django.conf import settings
 import random
 
 def index(request):
-    _context = {'check':False}
-    if request.session.get('access_token'):
-        _context['check'] = True
-    return render(request, 'index.html', _context)
+    return render(request, 'index.html')
 
 # @login_required
 def gamseong(request):
     user=request.user
     print(user)
     # 각 cluster별 랜덤으로
-    # 이거를 모델에 넣어서 pnu퀴즈처럼 꺼내는 느낌?!?or
     r_mood1=['힙한', '레트로감성', '음악이있는', '트렌디한', '세련된']
-    r_mood2=['귀여운', '밝은', '아기자기한한', '러블리한', '화이트톤']
+    r_mood2=['귀여운', '밝은', '아기자기한한', '러블리한']
     r_mood3=['따뜻한', '정갈한', '아담한', '일본감성', '아늑한', '도란도란']
     r_mood4=['친절한', '쾌적한', '심플한', '편한', '즐거운', '색다른']
     r_mood5=['정감있는', '전통있는', '옛날의']
@@ -54,107 +49,235 @@ def gamseong(request):
     random_p_mood6 = random.choice(p_mood3)
     random_p_mood8 = random.choice(p_mood4)
 
-    # if request.method=="POST":
-        # 메인에서 추천할 각각의 가게들
-    # if request.POST:                #각 input에 감성 submit했을때 나올 추천리스트 다르게
-    #     gam=request.POST['gam']
-    #     return render(request, 'main.html',{'gam':gam})
-
-    context={"random_r_mood1":random_r_mood1,"random_r_mood2":random_r_mood2,"random_r_mood3":random_r_mood3,"random_r_mood4":random_r_mood4,"random_r_mood5":random_r_mood5,"random_r_mood6":random_r_mood6,"random_r_mood7":random_r_mood7,"random_r_mood8":random_r_mood8,"r_mood1":r_mood1,"r_mood2":r_mood2,"r_mood3":r_mood3,"r_mood4":r_mood4,"r_mood5":r_mood5,"r_mood6":r_mood6,"r_mood7":r_mood7,"r_mood8":r_mood8,"random_p_mood1":random_p_mood1,"random_p_mood2":random_p_mood2,"random_p_mood3":random_p_mood3,"random_p_mood4":random_p_mood4,"random_p_mood5":random_p_mood5,"random_p_mood6":random_p_mood6,"random_p_mood7":random_p_mood7,"random_p_mood8":random_p_mood8,"p_mood1":p_mood1,"p_mood2":p_mood2,"p_mood3":p_mood3,"p_mood4":p_mood4}
+    context={"random_r_mood1":random_r_mood1,"random_r_mood2":random_r_mood2,"random_r_mood3":random_r_mood3,
+    "random_r_mood4":random_r_mood4,"random_r_mood5":random_r_mood5,"random_r_mood6":random_r_mood6,"random_r_mood7":random_r_mood7,
+    "random_r_mood8":random_r_mood8,"r_mood1":r_mood1,"r_mood2":r_mood2,"r_mood3":r_mood3,"r_mood4":r_mood4,"r_mood5":r_mood5,
+    "r_mood6":r_mood6,"r_mood7":r_mood7,"r_mood8":r_mood8,"random_p_mood1":random_p_mood1,"random_p_mood2":random_p_mood2,
+    "random_p_mood3":random_p_mood3,"random_p_mood4":random_p_mood4,"random_p_mood5":random_p_mood5,"random_p_mood6":random_p_mood6,
+    "random_p_mood7":random_p_mood7,"random_p_mood8":random_p_mood8,
+    "p_mood1":p_mood1,"p_mood2":p_mood2,"p_mood3":p_mood3,"p_mood4":p_mood4}
     return render(request,'gamseong.html',context)
 
-# test용 -감성키워드 선택/전달~~추천알고리즘
-#1. json으로 띄우기!!!!!!!!!!!!!!!!!!!
-#2. 감성 request 전달 받아서 연결!!!!!!!!!(html상 문제다-파라미터 받기)
+#test용
 from . import testAPI
 def test(request):
     r_keyword='인테리어예쁜'
     result= testAPI.find_sim_rest(r_keyword)  #result1,2로 각각 r/pmood알고리즘
-
     return render(request, 'test.html',{'result':result})
 
-##
+### 감성키워드 선택/전달~~추천알고리즘
+#1. json으로 띄우기!!
+#2. 감성 request 전달 받아서 연결
+#3. 랜덤 선택 3개
+    # 3개를 리스트나 딕셔너리에 추가
+    # 해당 객체를 context로 템플릿으로 전송
+    # 템플릿에서 해당 객체의 인덱스나 키를 사용해서 추출
+    # 화면에 출력
 from . import recommend_r, recommend_p
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
-# def main(request,rest_id):
 def main(request):
     restaurant= Restaurant.objects.all()
-    # rest= Restaurant.objects.get(id=rest_id)
-    # idx=Recommend.objects.filter(rest_id=rest_id)
-
-    # r_gam이면~/p_gam이면~ ->form두개로!!!!
-    context = dict()
-    # resultCafe={}
-    # resultFood={}
-    # resultBar={}
+    three={}
     try: 
         r_keyword=request.POST['r_gam']
         print(r_keyword)
         r_result= recommend_r.find_sim_rest(r_keyword) #df형식은 못가져와!!->json으로 
-        context['r_keyword']=r_keyword
-        context['r_result']=r_result
+        three= random.sample(list(r_result.values()),3)     #json추천결과 중 랜덤으로 3개
+        print(three)    #리스트로 싸여있음->[index]로 뽑아야함!
+        print(three[0])
+        #box1
+        name1 =three[0]['name']
+        category1 =three[0]['category']
+        img1 =three[0]['dayimg']
+        genre1 =three[0]['genre']
+        addr1 =three[0]['addr']
+        phone1 =three[0]['phone']
+        rmood1 =three[0]['rmood']
+        dayornight1 =three[0]['dayornight']
+        #box2
+        name2 =three[1]['name']
+        category2 =three[1]['category']
+        img2 =three[1]['dayimg']
+        genre2 =three[1]['genre']
+        addr2 =three[1]['addr']
+        phone2 =three[1]['phone']
+        rmood2 =three[1]['rmood']
+        dayornight2 =three[1]['dayornight']
+        #box3
+        name3 =three[2]['name']
+        category3 =three[2]['category']
+        img3 =three[2]['dayimg']
+        genre3 =three[2]['genre']
+        addr3 =three[2]['addr']
+        phone3 =three[2]['phone']
+        rmood3 =three[2]['rmood']
+        dayornight3 =three[2]['dayornight']
 
-        # 랜덤 선택 3개
-        # 3개를 리스트나 딕셔너리에 추가
-        # 해당 객체를 context로 템플리스오 전송
-        # 템플릿에서 해당 객체의 인덱스나 키를 사용해서 추출
-        # 화면에 출력
+        context={'r_keyword':r_keyword,'r_result':r_result,
+        'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
+        'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
+        'name3':name3,'category3':category3,'img3':img3,'genre3':genre3,'addr3':addr3,'phone3':phone3,'rmood3':rmood3,'dayornight3':dayornight3}
 
-        for i,v in r_result.items():    #items() : object받음
-            # resultCafe[v["name"]] = {'이름': v["name"] , '종류':v["category"], '사진':v["dayimg"]}
-            place_name =v['name']      #키값이 중복되서 마지막 애만 뜸.
-            p_category =v['category']
-            p_img= v['dayimg']
-            p_genre=v['genre']
-        
-        # context['resultCafe']=resultCafe
-        context['place_name']=place_name
-        context['p_category']=p_category
-        context['p_img']=p_img
-        context['p_genre']=p_genre
     except: 
         p_keyword=request.POST['p_gam']
         print(p_keyword)
         p_result= recommend_p.find_sim_rest(p_keyword)
-        context['p_keyword']=p_keyword
-        context['p_result']=p_result
+        three= random.sample(list(p_result.values()),3)     #json추천결과 중 랜덤으로 3개
+        #box1
+        name1 =three[0]['name']
+        category1 =three[0]['category']
+        img1 =three[0]['dayimg']
+        genre1 =three[0]['genre']
+        addr1 =three[0]['addr']
+        phone1 =three[0]['phone']
+        rmood1 =three[0]['rmood']
+        dayornight1 =three[0]['dayornight']
+        #box2
+        name2 =three[1]['name']
+        category2 =three[1]['category']
+        img2 =three[1]['dayimg']
+        genre2 =three[1]['genre']
+        addr2 =three[1]['addr']
+        phone2 =three[1]['phone']
+        rmood2 =three[1]['rmood']
+        dayornight2 =three[1]['dayornight']
+        #box3
+        name3 =three[2]['name']
+        category3 =three[2]['category']
+        img3 =three[2]['dayimg']
+        genre3 =three[2]['genre']
+        addr3 =three[2]['addr']
+        phone3 =three[2]['phone']
+        rmood3 =three[2]['rmood']
+        dayornight3 =three[2]['dayornight']
 
-        for i,v in p_result.items():    #items() : object받음
-            # resultCafe[v["name"]] = {'이름': v["name"] , '종류':v["category"], '사진':v["dayimg"]}
-            place_name =v['name']      #키값이 중복되서 마지막 애만 뜸.
-            p_category =v['category']
-            p_img= v['dayimg']
-            p_genre=v['genre']
-            #이미지 필드 가져오는거 여기서 모델에서 가져와서 연결-이미지 미디어가 있는 주소
-        
-        # context['resultCafe']=resultCafe
-        context['place_name']=place_name
-        context['p_category']=p_category
-        context['p_img']=p_img
-        context['p_genre']=p_genre
-
-        print(v["name"], v["category"], v['dayimg'])
-
-    #키-value로 받아서 뷰에서 변수로 넣고 html에서 input에 {{식당name}}로 받아서 그다음에 전달-감성키워드처럼
-   
+        context={'p_keyword':p_keyword,'p_result':p_result,
+        'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
+        'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
+        'name3':name3,'category3':category3,'img3':img3,'genre3':genre3,'addr3':addr3,'phone3':phone3,'rmood3':rmood3,'dayornight3':dayornight3}
+    
     return render(request,'main.html',context)
+
+
 
 from . import recommend_main2
 def main2(request):
-    restaurant2= Restaurant.objects.all()
-    # restaurant1=get_object_or_404(Restaurant,idx=idx)
-
+    # restaurant2= Restaurant.objects.all()
     if request.POST:
         place_name=request.POST['place_name']
     recommend_list= recommend_main2.find_sim_rest(place_name,11)
+    topten= list(recommend_list.values()) 
+    print(topten)
+    # for i in range(0,10):   #리스트에서 인덱싱
+    #     name=top_ten[i]
+
+    #box1
+    name1 =topten[1]['name']
+    category1 =topten[1]['category']
+    img1 =topten[1]['dayimg']
+    genre1 =topten[1]['genre']
+    addr1 =topten[1]['addr']
+    phone1 =topten[1]['phone']
+    rmood1 =topten[1]['rmood']
+    dayornight1 =topten[1]['dayornight']
+    #box2
+    name2 =topten[2]['name']
+    category2 =topten[2]['category']
+    img2 =topten[2]['dayimg']
+    genre2 =topten[2]['genre']
+    addr2 =topten[2]['addr']
+    phone2 =topten[2]['phone']
+    rmood2 =topten[2]['rmood']
+    dayornight2 =topten[2]['dayornight']
+    #box3
+    name3 =topten[3]['name']
+    category3 =topten[3]['category']
+    img3 =topten[3]['dayimg']
+    genre3 =topten[3]['genre']
+    addr3 =topten[3]['addr']
+    phone3 =topten[3]['phone']
+    rmood3 =topten[3]['rmood']
+    dayornight3 =topten[3]['dayornight']
+    #box4
+    name4 =topten[4]['name']
+    category4 =topten[4]['category']
+    img4 =topten[4]['dayimg']
+    genre4 =topten[4]['genre']
+    addr4 =topten[4]['addr']
+    phone4 =topten[4]['phone']
+    rmood4 =topten[4]['rmood']
+    dayornight4 =topten[4]['dayornight']
+    #box5
+    name5 =topten[5]['name']
+    category5 =topten[5]['category']
+    img5 =topten[5]['dayimg']
+    genre5 =topten[5]['genre']
+    addr5 =topten[5]['addr']
+    phone5 =topten[5]['phone']
+    rmood5 =topten[5]['rmood']
+    dayornight5 =topten[5]['dayornight']
+    #box6
+    name6 =topten[6]['name']
+    category6 =topten[6]['category']
+    img6 =topten[6]['dayimg']
+    genre6 =topten[6]['genre']
+    addr6 =topten[6]['addr']
+    phone6 =topten[6]['phone']
+    rmood6 =topten[6]['rmood']
+    dayornight6 =topten[6]['dayornight']
+    #box7
+    name7 =topten[7]['name']
+    category7 =topten[7]['category']
+    img7 =topten[7]['dayimg']
+    genre7 =topten[7]['genre']
+    addr7 =topten[7]['addr']
+    phone7 =topten[7]['phone']
+    rmood7 =topten[7]['rmood']
+    dayornight7 =topten[7]['dayornight']
+    #box8
+    name8 =topten[8]['name']
+    category8 =topten[8]['category']
+    img8 =topten[8]['dayimg']
+    genre8 =topten[8]['genre']
+    addr8 =topten[8]['addr']
+    phone8 =topten[8]['phone']
+    rmood8 =topten[8]['rmood']
+    dayornight8 =topten[8]['dayornight']
+    #box9
+    name9 =topten[9]['name']
+    category9 =topten[9]['category']
+    img9 =topten[9]['dayimg']
+    genre9 =topten[9]['genre']
+    addr9 =topten[9]['addr']
+    phone9 =topten[9]['phone']
+    rmood9 =topten[9]['rmood']
+    dayornight9 =topten[9]['dayornight']
+    #box10
+    name10 =topten[10]['name']
+    category10 =topten[10]['category']
+    img10 =topten[10]['dayimg']
+    genre10 =topten[10]['genre']
+    addr10 =topten[10]['addr']
+    phone10 =topten[10]['phone']
+    rmood10 =topten[10]['rmood']
+    dayornight10 =topten[10]['dayornight']
 
    
-    context={"restaurant2":restaurant2,"place_name":place_name, "recommend_list":recommend_list}
+    context={"place_name":place_name, "recommend_list":recommend_list,
+    'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
+    'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
+    'name3':name3,'category3':category3,'img3':img3,'genre3':genre3,'addr3':addr3,'phone3':phone3,'rmood3':rmood3,'dayornight3':dayornight3,
+    'name4':name4,'category4':category4,'img4':img4,'genre4':genre4,'addr4':addr4,'phone4':phone4,'rmood4':rmood4,'dayornight4':dayornight4,
+    'name5':name5,'category5':category5,'img5':img5,'genre5':genre5,'addr5':addr5,'phone5':phone5,'rmood5':rmood5,'dayornight5':dayornight5,
+    'name6':name6,'category6':category6,'img6':img6,'genre6':genre6,'addr6':addr6,'phone6':phone6,'rmood6':rmood6,'dayornight6':dayornight6,
+    'name7':name7,'category7':category7,'img7':img7,'genre7':genre7,'addr7':addr7,'phone7':phone7,'rmood7':rmood7,'dayornight7':dayornight7,
+    'name8':name8,'category8':category8,'img8':img8,'genre8':genre8,'addr8':addr8,'phone8':phone8,'rmood8':rmood8,'dayornight8':dayornight8,
+    'name9':name9,'category9':category9,'img9':img9,'genre9':genre9,'addr9':addr9,'phone9':phone9,'rmood9':rmood9,'dayornight9':dayornight9,
+    'name10':name10,'category10':category10,'img10':img10,'genre10':genre10,'addr10':addr10,'phone10':phone10,'rmood10':rmood10,'dayornight10':dayornight10
+    }
     return render(request,'main2.html',context)
 
-
+#추천평가페이지
 def detail(request):
-    detail_contents=Restaurant.objects.all()
-    # detail_contents=Restaurant.objects.get(idx=idx)
     return render(request,'detail.html')

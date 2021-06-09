@@ -47,10 +47,7 @@ rest_mat_rmood=count_vect.transform(rest['rmood'])
 
 simrmood['words'] = simrmood['words'].apply(lambda x : (' ').join(x))
 key_mat_rmood=count_vect.transform(simrmood['words'])
-#
-# print(u.get_feature_names())
-# print(key_mat_rmood.toarray())
-#
+
 
 ######코사인 유사도#######
 from sklearn.metrics.pairwise import cosine_similarity
@@ -86,66 +83,11 @@ def find_sim_rest(key_name):
 
 
 
-
-
 # #####
 # #sep_cos_weighted
 # keyname='인테리어예쁜'  #views에서 받아쓰고싶음
 # similar_rest = find_sim_rest(simrmood, rmood_sim_sorted_ind, keyname )  
 # #해당 키워드를 누르면 식당 추천   //// key_name이 '인테리어예쁜'
 # # print(similar_rest) #dataframe 형식
-
-# #json형식으로 변환
-# ###########json까지 위에 함수하나로 다 넣고 인자는 keyword하나로
-# import json
-# def result_jsn  (result):
-#   # jj=similar_rest.fetall()
-#   jsjs= similar_rest.to_json(orient = 'values',force_ascii=False)
-#   getjsn=json.loads(jsjs)  
-#   # print(getjsn)
-#   # result={}
-  
-#   result=json.dumps(getjsn,ensure_ascii=False)
-#   # print(getjsn)
-#   print(result)
-#   # i=0
-#   # for item in jsjs:
-#   #   # item=dict(item.items())
-#   #   print(item)
-#   #   result[str(i)]=json.dumps(jsjs,ensure_ascii=False)
-#     # print(result)
-#     # i+=1
-#   return result
-#   # return getjsn
-
-
-
-
-
-# jsjs= similar_rest.to_json(orient = 'records', force_ascii=False)
-
-# print(jsjs)
-# getjsn=json.loads(jsjs)  
-# print(jsjs)
-# jd={}
-# jd= json.dumps(jsjs,ensure_ascii=False)
-# print(jd)
-
-# i=0
-# for item in getjsn:
-#   # item=dict(item.items())
-#   # print(item)
-#   # result[str(i)+'번']=(json.dumps(item,ensure_ascii=False))
-#   result[str(i)+'번']=(json.dumps(item,ensure_ascii=False))
-#   i+=1
-# result=json.loads(similar_rest.to_json(orient='records',force_ascii=False)) 
-# print(result)
-
-# print (result_jsn(new_data2['']))
-
-##json으로 바꾼걸 return? 아님 뷰에서 json으로?
-
-#print('END TIME : ',str(datetime.now())[10:19] )
-
 
 

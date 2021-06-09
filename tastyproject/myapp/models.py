@@ -33,6 +33,4 @@ class Restaurant(models.Model):
 #     def __str__(self):
 #         return str(self.rlist)
 
-# 전체 가게 테이블(모델) -> 칼럼: 사진, 가게이름, 가게종류(식당/술집/카페)
-# 식당만/카페만/술집만 모델 -> 칼럼: 사진, 가게이름
 
