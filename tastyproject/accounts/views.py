@@ -20,9 +20,7 @@ def register(request):
     register_form=RegisterForm()
     #추가할것!
     #아이디 같은거 있음 오류뜸-예외처리
-    # username=MyUser.objects.all()
     if request.method=="POST":
-        # register_form=RegisterForm(request.POST)
         if request.POST["password1"] == request.POST["password2"]:
             user = User.objects.create_user(
                 username=request.POST["username"],
