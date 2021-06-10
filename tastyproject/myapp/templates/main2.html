@@ -18,7 +18,10 @@
     <form action="" method="POST">
         {% csrf_token %}
         <div>
+        <span>📢추천결과 관련 이용자 피드백을 받고 있습니다.(10초 컷)<br>
+            현재 페이지 가장 하단의 '추천결과 평가하기' 버튼을 눌러<br> 평가 부탁드립니다! </span><br><br>
             <h3>🍴{{place_name}}🍴와(과) 유사한 감성의 식당추천 </h3><h2>🏆TOP 10🏆</h2>
+            
         </div>
         {% if recommend_list %}
         <div class="all_box">

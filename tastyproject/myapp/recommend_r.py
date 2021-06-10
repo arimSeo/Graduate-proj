@@ -69,7 +69,7 @@ def find_sim_rest(key_name):
   # print(similar_indexes)
   similar_indexes = similar_indexes.reshape(-1)
   idx= rest.iloc[similar_indexes]
-  print(idx)
+  # print(idx)
   result=json.loads(idx.to_json(orient='index',force_ascii=False))  
 
   return result

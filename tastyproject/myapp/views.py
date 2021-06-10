@@ -77,15 +77,14 @@ from . import recommend_r, recommend_p
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def main(request):
-    restaurant= Restaurant.objects.all()
     three={}
     try: 
         r_keyword=request.POST['r_gam']
         print(r_keyword)
         r_result= recommend_r.find_sim_rest(r_keyword) #df형식은 못가져와!!->json으로 
         three= random.sample(list(r_result.values()),3)     #json추천결과 중 랜덤으로 3개
-        print(three)    #리스트로 싸여있음->[index]로 뽑아야함!
-        print(three[0])
+        # print(three)    #리스트로 싸여있음->[index]로 뽑아야함!
+        # print(three[0])
         #box1
         name1 =three[0]['name']
         category1 =three[0]['category']
@@ -163,14 +162,11 @@ def main(request):
 
 from . import recommend_main2
 def main2(request):
-    # restaurant2= Restaurant.objects.all()
     if request.POST:
         place_name=request.POST['place_name']
     recommend_list= recommend_main2.find_sim_rest(place_name,11)
     topten= list(recommend_list.values()) 
-    print(topten)
-    # for i in range(0,10):   #리스트에서 인덱싱
-    #     name=top_ten[i]
+    # print(topten)
 
     #box1
     name1 =topten[1]['name']

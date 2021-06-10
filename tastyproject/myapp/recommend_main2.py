@@ -129,6 +129,6 @@ def find_sim_rest(rest_name, top_n):
   idx2=rest.iloc[similar_indexes]
 
   result2=json.loads(idx2.to_json(orient='index',force_ascii=False)) 
-  print(result2)
+  # print(result2)
 
   return result2
