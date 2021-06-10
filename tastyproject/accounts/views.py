@@ -28,7 +28,7 @@ def register(request):
             profile = MyUser(
                 user=user,
                 name=request.POST["username"],
-                birth=request.POST["birthday"],
+                # birth=request.POST["birthday"],
                 gender=request.POST["gender"],
                 permit=request.POST.get('ispermit', '') == 'on')
             profile.save() 

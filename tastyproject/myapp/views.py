@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Restaurant
+from .models import Restaurant, Voting, Voting2
 from django.contrib.auth.models import User
 from django.conf import settings
 import random
@@ -276,4 +276,47 @@ def main2(request):
 
 #추천평가페이지
 def detail(request):
-    return render(request,'detail.html')
+    vote=Voting.objects.get() 
+    vote2=Voting2.objects.get()
+    context={"vote":vote, "vote2":vote2}
+    return render(request,'detail.html',context)
+ 
+def end(request):
+    context={}
+    vote=Voting.objects.get() 
+    vote2=Voting2.objects.get()
+    context['vote']=vote    
+    context['vote2']=vote2
+
+    try:
+        if request.POST['ans1']=='5':
+            vote.result5 +=1
+            # context['result5']=vote.result5
+        elif request.POST['ans1']=='4':
+            vote.result4 +=1
+        elif request.POST['ans1']=='3':
+            vote.result3 +=1
+        elif request.POST['ans1']=='2':
+            vote.result2 +=1
+        elif request.POST['ans1']=='1':
+            vote.result1 +=1
+        vote.save()
+            
+        if request.POST['ans2']=='5':
+            vote2.score5 +=1
+        elif request.POST['ans2']=='4':
+            vote2.score4 +=1
+        elif request.POST['ans1']=='3':
+            vote2.score3 +=1
+        elif request.POST['ans1']=='2':
+            vote2.score2 +=1
+        elif request.POST['ans1']=='1':
+            vote2.score1 +=1
+        vote2.save()
+    except:  
+        message="✔ 반드시 하나를 선택해주세요 ✔"
+        context['message']=message
+        return render(request,'detail.html',context)
+    
+    
+    return render(request,'end.html',context)

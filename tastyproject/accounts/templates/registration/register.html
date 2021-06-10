@@ -18,17 +18,7 @@
         <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
         <div class="h1">Sign-Up</div>
         {% csrf_token %}
-        
-        {% comment %} {% for field in form %} 
-        <div class="form-group"> 
-        <label for='{{field.id_for_label}}'>{{field.label}}</label>
-         {{field}} </div>
-          {% if field.errors %}
-           <span style='color:red'>{{field.errors}}</span>
-        {% endif %} 
-        {% endfor %} {% endcomment %}
-
-       <div class="message">{{ message }}</div>
+        <div class="message">{{ message }}</div>
 
         <div class="idid">
             <label for="email" class="labelEmail">
@@ -49,20 +39,21 @@
             <label for="pass2" class="labelPass">
                 <span>PW 확인</span>
             </label>
-            <input type="password" id="pass2" name="password2" value="{{ form.password2.value|default_if_none:'' }}" required>
+            <input type="password" id="pass2" name="password2" value="{{ form.password2.value|default_if_none:'' }}"
+                required>
         </div>
 
-        <div>
+        <div class="day">
             <span class="gen">성별</span>
             <span class="gen-form">{{register_form.gender}}<span>
-        </span>
-
-        <div class="day">
+                </span>
+        </div>
+        <!-- <div class="day">
             <label for="birth" class="labelBirth">
                 <span>생일</span>
             </label>
-            <input type="date" id="birth" name="birthday" placeholder="생년월일" autocomplete="off" required>
-        </div>
+            <input type="date" id="birth" name="birthday" placeholder="생년월일" autocomplete="off" required>-->
+        <!-- </div> -->
 
 
         <div class="check">
@@ -75,12 +66,11 @@
         <input onClick="btn()" type="image" src="{% static 'image/Group 3.png' %}" class="regi_btn">
     </form>
     <script>
-    function btn() {
-        //비밀번호 일치안하면 안뜨게
-        swal("Welcome!", "회원가입이 완료되었습니다. 로그인해주세요.", "success");
-        document.getElementById("popup").submit()
-        //else: swal("Welcome!", "비밀번호가 일치하지 않습니다.", "error");
-    }
+        function btn() {
+            //비밀번호 일치안하면 안뜨게
+            swal("Welcome!", "회원가입이 완료되었습니다. 로그인해주세요.", "success");
+            document.getElementById("popup").submit()
+        }
     </script>
 
 </body>

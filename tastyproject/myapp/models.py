@@ -25,12 +25,25 @@ class Restaurant(models.Model):
         return str(self.idx)+self.name
         # return str(self.id)
 
+#추천결과 평가점수 저장
+class Voting(models.Model):
+    question = models.CharField(max_length=100,null=True)
+    result5= models.IntegerField(default=0)  #매우만족
+    result4= models.IntegerField(default=0)
+    result3= models.IntegerField(default=0)
+    result2= models.IntegerField(default=0)
+    result1= models.IntegerField(default=0)
 
-# 전체에서 감성기반 추천 
-# class Recommend(models.Model):
-#     rlist= models.ForeignKey(RestaurantList,on_delete=models.CASCADE)
-#     # idx로 이름 
-#     def __str__(self):
-#         return str(self.rlist)
+    def __str__(self):
+        return self.question
 
+class Voting2(models.Model):
+    question = models.CharField(max_length=100,null=True)
+    score5= models.IntegerField(default=0)      #매우만족
+    score4= models.IntegerField(default=0)
+    score3= models.IntegerField(default=0)
+    score2= models.IntegerField(default=0)
+    score1= models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.question

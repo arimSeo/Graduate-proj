@@ -10,14 +10,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <title>추천결과 평가하기</title>
 </head>
+
 <body>
-    <marquee direction="up" scrollmount="10" scrolldelay="300" height="200px" behavior="slide"> 
-    안녕하세요. 2021 부산대학교 산업공학과 졸업과제로 제작된 본 서비스를 이용해주셔서 우선 감사인사 드립니다!<br>
+    <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
+    <div class="h1">추천결과는 만족스러우셨나요?</div>
+    <span class="text">
+    안녕하세요. 우선 부산대학교 산업공학과 2021년도 졸업과제로 제작된 본 서비스를 이용해주셔서 감사인사 드립니다!<br>
     현재 300여개의 부산대 인근가게 데이터들을 바탕으로 제작되었으며, 이후 필요시 더 많은 데이터들을 넣어 업데이트 할 계획입니다.<br>
     이에, 더 발전된 추천서비스를 제공하기 위해서 여러분들의 피드백을 받고자 합니다.<br>
     여러분들의 소중한 시간을 잠시만 투자해 아래의 문항에 대해 평가해주시면 감사드리겠습니다!^^<br>
     다시 한번 TASTY를 이용해 주신 모든 분들께 감사드립니다~
-    </marquee>
+    </span>
+    <br><br>
+    <form action="{% url 'end' %}" method="POST">
+        {% csrf_token %}
+        <div class="message">{{ message }}</div>
+
+        <h3>📌{{vote.question}}</h3>
+
+        <input type="radio" id="s5" name="ans1" value="1" />
+        <label for="s5">매우 불만족</label>
+        <input type="radio" id="s4" name="ans1" value="2" />
+        <label for="s4">불만족</label>
+        <input type="radio" id="s3" name="ans1" value="3" />
+        <label for="s3">보통</label>
+        <input type="radio" id="s2" name="ans1" value="4" />
+        <label for="s2">만족</label>
+        <input type="radio" id="s1" name="ans1" value="5" />
+        <label for="s1">매우 만족</label>
+
+        <br><br>
+        <h3>📌{{vote2.question}}</h3>
+        <input type="radio" id="v5" name="ans2" value="1" />
+        <label for="v5">매우 불만족</label>
+        <input type="radio" id="v4" name="ans2" value="2" />
+        <label for="v4">불만족</label>
+        <input type="radio" id="v3" name="ans2" value="3" />
+        <label for="v3">보통</label>
+        <input type="radio" id="v2" name="ans2" value="4" />
+        <label for="v2">만족</label>
+        <input type="radio" id="v1" name="ans2" value="5" />
+        <label for="v1">매우 만족</label>
+        <br><br><br>
+
+        <input type="submit" class="btn" value="평가완료">
+        <br><br><br>
+    </form>
 </body>
 
 </html>
