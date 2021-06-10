@@ -15,7 +15,7 @@
     <img src="{% static 'image/logo1.png' %}" width="60px" height="25px">
     <div class="h1">이런 가게는 어때요?</div>
     <br>
-    <form action="" method="POST">
+    <form action="{% url 'main2' %}" method="POST">
         {% csrf_token %}
         <div>
         <span>📢추천결과 관련 이용자 피드백을 받고 있습니다.(10초 컷)<br>
@@ -32,7 +32,10 @@
                 <b>주소:</b> {{addr1}}<br><br>
                 <b>전화번호:</b> {{phone1}}<br><br>
                 <b>감성:</b> {{rmood1}}<br><br>
-                💛 <b>{{dayornight1}}</b> 가기 좋아요!
+                💛 <b>{{dayornight1}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name1}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div>
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img2}}" class="imgimg"><br>
@@ -41,7 +44,10 @@
                 <b>주소:</b> {{addr2}}<br><br>
                 <b>전화번호:</b> {{phone2}}<br><br>
                 <b>감성:</b> {{rmood2}}<br><br>
-                💛 <b>{{dayornight2}}</b> 가기 좋아요!
+                💛 <b>{{dayornight2}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name2}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img3}}" class="imgimg"><br>
@@ -50,7 +56,10 @@
                 <b>주소:</b> {{addr3}}<br><br>
                 <b>전화번호:</b> {{phone3}}<br><br>
                 <b>감성:</b> {{rmood3}}<br><br>
-                💛 <b>{{dayornight3}}</b> 가기 좋아요!
+                💛 <b>{{dayornight3}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name3}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img4}}" class="imgimg"><br>
@@ -59,7 +68,10 @@
                 <b>주소:</b> {{addr4}}<br><br>
                 <b>전화번호:</b> {{phone4}}<br><br>
                 <b>감성:</b> {{rmood4}}<br><br>
-                💛 <b>{{dayornight4}}</b> 가기 좋아요!
+                💛 <b>{{dayornight4}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name4}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img5}}" class="imgimg"><br>
@@ -68,7 +80,10 @@
                 <b>주소:</b> {{addr5}}<br><br>
                 <b>전화번호:</b> {{phone5}}<br><br>
                 <b>감성:</b> {{rmood5}}<br><br>
-                💛 <b>{{dayornight5}}</b> 가기 좋아요!
+                💛 <b>{{dayornight5}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name5}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img6}}" class="imgimg"><br>
@@ -77,7 +92,10 @@
                 <b>주소:</b> {{addr6}}<br><br>
                 <b>전화번호:</b> {{phone6}}<br><br>
                 <b>감성:</b> {{rmood6}}<br><br>
-                💛 <b>{{dayornight6}}</b> 가기 좋아요!
+                💛 <b>{{dayornight6}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name6}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img7}}" class="imgimg"><br>
@@ -86,7 +104,10 @@
                 <b>주소:</b> {{addr7}}<br><br>
                 <b>전화번호:</b> {{phone7}}<br><br>
                 <b>감성:</b> {{rmood7}}<br><br>
-                💛 <b>{{dayornight7}}</b> 가기 좋아요!
+                💛 <b>{{dayornight7}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name7}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img8}}" class="imgimg"><br>
@@ -95,7 +116,10 @@
                 <b>주소:</b> {{addr8}}<br><br>
                 <b>전화번호:</b> {{phone8}}<br><br>
                 <b>감성:</b> {{rmood8}}<br><br>
-                💛 <b>{{dayornight8}}</b> 가기 좋아요!
+                💛 <b>{{dayornight8}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name8}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img9}}" class="imgimg"><br>
@@ -104,7 +128,10 @@
                 <b>주소:</b> {{addr9}}<br><br>
                 <b>전화번호:</b> {{phone9}}<br><br>
                 <b>감성:</b> {{rmood9}}<br><br>
-                💛 <b>{{dayornight9}}</b> 가기 좋아요!
+                💛 <b>{{dayornight9}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name9}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
             <div class="box">
                 <img src="{% get_static_prefix %}image/{{img10}}" class="imgimg"><br>
@@ -113,7 +140,10 @@
                 <b>주소:</b> {{addr10}}<br><br>
                 <b>전화번호:</b> {{phone10}}<br><br>
                 <b>감성:</b> {{rmood10}}<br><br>
-                💛 <b>{{dayornight10}}</b> 가기 좋아요!
+                💛 <b>{{dayornight10}}</b> 가기 좋아요!<br><br>
+                <div class="name1">
+                    <input type='submit' class="name_btn" name="place_name" value={{name10}}> 와(과) 유사한 가게 추천받기!
+                </div>
             </div> 
         </div>
         {% endif %}
