@@ -71,11 +71,13 @@ body{
     border-radius: 8px;
     background: transparent;
     color: white;
-    /* font-weight: bold; */
     cursor: pointer;
     padding:3% 3%;
     margin:4% 0 0% 0;
     background: rgba(114, 82, 39, 0.315);
+    /* 아이폰 css기본값 초기화 */
+    -webkit-appearance: none;   
+    -webkit-border-radius: 0;
 }
 .g1:hover, .gg1:hover{
     color:bisque;
@@ -125,6 +127,8 @@ body{
     .g1, .gg1{
         width:65%;
         padding:4% 0 4% 0;
+        /* 아이폰 css기본값 초기화 */
+        -webkit-appearance: none;   
     }
 
     .h2{

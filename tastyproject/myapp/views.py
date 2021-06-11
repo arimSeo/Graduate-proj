@@ -83,11 +83,12 @@ def main(request):
         print(r_keyword)
         r_result= recommend_r.find_sim_rest(r_keyword) #df형식은 못가져와!!->json으로 
         three= random.sample(list(r_result.values()),3)     #json추천결과 중 랜덤으로 3개
-        # print(three)    #리스트로 싸여있음->[index]로 뽑아야함!
+        print(three)    #리스트로 싸여있음->[index]로 뽑아야함!
         # print(three[0])
         #box1
         name1 =three[0]['name']
         category1 =three[0]['category']
+        main1=three[0]['main']
         img1 =three[0]['dayimg']
         genre1 =three[0]['genre']
         addr1 =three[0]['addr']
@@ -97,6 +98,7 @@ def main(request):
         #box2
         name2 =three[1]['name']
         category2 =three[1]['category']
+        main2=three[1]['main']
         img2 =three[1]['dayimg']
         genre2 =three[1]['genre']
         addr2 =three[1]['addr']
@@ -106,6 +108,7 @@ def main(request):
         #box3
         name3 =three[2]['name']
         category3 =three[2]['category']
+        main3=three[2]['main']
         img3 =three[2]['dayimg']
         genre3 =three[2]['genre']
         addr3 =three[2]['addr']
@@ -113,7 +116,7 @@ def main(request):
         rmood3 =three[2]['rmood']
         dayornight3 =three[2]['dayornight']
 
-        context={'r_keyword':r_keyword,'r_result':r_result,
+        context={'r_keyword':r_keyword,'r_result':r_result, 'main1':main1, 'main2':main2,'main3':main3,
         'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
         'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
         'name3':name3,'category3':category3,'img3':img3,'genre3':genre3,'addr3':addr3,'phone3':phone3,'rmood3':rmood3,'dayornight3':dayornight3}
@@ -126,6 +129,7 @@ def main(request):
         #box1
         name1 =three[0]['name']
         category1 =three[0]['category']
+        main1=three[0]['main']
         img1 =three[0]['dayimg']
         genre1 =three[0]['genre']
         addr1 =three[0]['addr']
@@ -135,6 +139,7 @@ def main(request):
         #box2
         name2 =three[1]['name']
         category2 =three[1]['category']
+        main2=three[1]['main']
         img2 =three[1]['dayimg']
         genre2 =three[1]['genre']
         addr2 =three[1]['addr']
@@ -144,6 +149,7 @@ def main(request):
         #box3
         name3 =three[2]['name']
         category3 =three[2]['category']
+        main3=three[2]['main']
         img3 =three[2]['dayimg']
         genre3 =three[2]['genre']
         addr3 =three[2]['addr']
@@ -151,7 +157,7 @@ def main(request):
         rmood3 =three[2]['rmood']
         dayornight3 =three[2]['dayornight']
 
-        context={'p_keyword':p_keyword,'p_result':p_result,
+        context={'p_keyword':p_keyword,'p_result':p_result, 'main1':main1, 'main2':main2,'main3':main3,
         'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
         'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
         'name3':name3,'category3':category3,'img3':img3,'genre3':genre3,'addr3':addr3,'phone3':phone3,'rmood3':rmood3,'dayornight3':dayornight3}
@@ -171,6 +177,7 @@ def main2(request):
     #box1
     name1 =topten[1]['name']
     category1 =topten[1]['category']
+    main1= topten[1]['main']
     img1 =topten[1]['dayimg']
     genre1 =topten[1]['genre']
     addr1 =topten[1]['addr']
@@ -180,6 +187,7 @@ def main2(request):
     #box2
     name2 =topten[2]['name']
     category2 =topten[2]['category']
+    main2= topten[2]['main']
     img2 =topten[2]['dayimg']
     genre2 =topten[2]['genre']
     addr2 =topten[2]['addr']
@@ -189,6 +197,7 @@ def main2(request):
     #box3
     name3 =topten[3]['name']
     category3 =topten[3]['category']
+    main3= topten[3]['main']
     img3 =topten[3]['dayimg']
     genre3 =topten[3]['genre']
     addr3 =topten[3]['addr']
@@ -198,6 +207,7 @@ def main2(request):
     #box4
     name4 =topten[4]['name']
     category4 =topten[4]['category']
+    main4= topten[4]['main']
     img4 =topten[4]['dayimg']
     genre4 =topten[4]['genre']
     addr4 =topten[4]['addr']
@@ -207,6 +217,7 @@ def main2(request):
     #box5
     name5 =topten[5]['name']
     category5 =topten[5]['category']
+    main5= topten[5]['main']
     img5 =topten[5]['dayimg']
     genre5 =topten[5]['genre']
     addr5 =topten[5]['addr']
@@ -216,6 +227,7 @@ def main2(request):
     #box6
     name6 =topten[6]['name']
     category6 =topten[6]['category']
+    main6= topten[6]['main']
     img6 =topten[6]['dayimg']
     genre6 =topten[6]['genre']
     addr6 =topten[6]['addr']
@@ -225,6 +237,7 @@ def main2(request):
     #box7
     name7 =topten[7]['name']
     category7 =topten[7]['category']
+    main7= topten[7]['main']
     img7 =topten[7]['dayimg']
     genre7 =topten[7]['genre']
     addr7 =topten[7]['addr']
@@ -234,6 +247,7 @@ def main2(request):
     #box8
     name8 =topten[8]['name']
     category8 =topten[8]['category']
+    main8= topten[8]['main']
     img8 =topten[8]['dayimg']
     genre8 =topten[8]['genre']
     addr8 =topten[8]['addr']
@@ -243,6 +257,7 @@ def main2(request):
     #box9
     name9 =topten[9]['name']
     category9 =topten[9]['category']
+    main9= topten[9]['main']
     img9 =topten[9]['dayimg']
     genre9 =topten[9]['genre']
     addr9 =topten[9]['addr']
@@ -252,14 +267,16 @@ def main2(request):
     #box10
     name10 =topten[10]['name']
     category10 =topten[10]['category']
+    main10= topten[10]['main']
     img10 =topten[10]['dayimg']
     genre10 =topten[10]['genre']
     addr10 =topten[10]['addr']
     phone10 =topten[10]['phone']
     rmood10 =topten[10]['rmood']
-    dayornight10 =topten[10]['dayornight']
+    dayornight10 =topten[10]['dayornight'] 
 
-    context={"place_name":place_name, "recommend_list":recommend_list,
+    context={"place_name":place_name, "recommend_list":recommend_list, 'main1':main1, 'main2':main2,'main3':main3,'main4':main4, 'main5':main5,'main6':main6,
+    'main7':main7, 'main8':main8,'main9':main9,'main10':main10,
     'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
     'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
     'name3':name3,'category3':category3,'img3':img3,'genre3':genre3,'addr3':addr3,'phone3':phone3,'rmood3':rmood3,'dayornight3':dayornight3,

@@ -37,7 +37,7 @@ body{
     font-size: 1.2rem;
 }
 .name1{
-    color:orange;
+    color:#ED7D31;
 }
 .name_btn{
     font-family: 'KyoboHand';
@@ -47,6 +47,9 @@ body{
     color:white;
     background-color: #ED7D31;
     cursor: pointer;
+    /* 아이폰 css기본값 초기화 */
+    -webkit-appearance: none;   
+    -webkit-border-radius: 0;
 }
 .name_btn:hover{
     color:rgb(255, 241, 231);
@@ -64,8 +67,8 @@ body{
     .box{
         border:2px solid #ED7D31;
         border-radius: 10px;
-        width:90%;
-        padding:20% 0%;
+        width:86%;
+        padding:10% 2% 10% 2%;
         margin:0 5% 6% 5%;
         display: block;
     }

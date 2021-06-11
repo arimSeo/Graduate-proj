@@ -63,7 +63,7 @@ def find_sim_rest(key_name):
   #sorted_ind 인자로 입력된 key_sim_sorted_ind 객체에서
   #유사도 순으로 top_n개의 index 추출
   name_index = name_key.index.values
-  similar_indexes = rmood_sim_sorted_ind[name_index, :15]   # 10개 
+  similar_indexes = rmood_sim_sorted_ind[name_index, :12]   # 10개 
 
   #top_n 2차원이므로 index 로 사용하기위해 array로 바꿔줘야 함.
   # print(similar_indexes)
