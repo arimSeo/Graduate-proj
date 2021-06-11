@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+*{
+    font-family: 'KyoboHand';
+    text-decoration: none;
+}
+.p{
+    color:rgba(114, 70, 34, 0.486);
+    font-size: 1.5rem;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+body{
+    text-align: center;
+    margin-top: 7%;
+    background-color: #9a6b3e80;
+}
+.loading_img{
+    width:20%;
+    height:20%;
+}
+.loading{
+    font-size: 1.3rem;
+    color:white;
+}
+.box1{
+    border:transparent;
+    background-color: #9a6b3e25;
+    padding:1% 0 1% 0;
+    margin:0 20% 0 20%;
+  
+}
+.mini-box1, .mini-box2 {
+    margin-top: 2%;
+    display: flex;
+    text-align: center;
+}
+.box2{
+    border:transparent;
+    background-color: #9a6b3e25;
+    padding:1% 0 1% 0;
+    margin:0 20% 5% 20%;
+}
+.h1{
+    color:#ffffff;
+    font-size: 4.6rem;
+}
+.h2{
+    color: rgba(255, 255, 255, 0.973);
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font-size: 1.8rem;
+}
+
+.row1{
+    flex:1;
+}
+.row2{
+    flex:1;
+}
+
+.g1, .gg1{
+    width:50%;
+    border:0px solid ;
+    border:transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    /* font-weight: bold; */
+    cursor: pointer;
+    padding:3% 3%;
+    margin:4% 0 0% 0;
+    background: rgba(114, 82, 39, 0.315);
+}
+.g1:hover, .gg1:hover{
+    color:bisque;
+}
+
+.last{
+    margin-bottom:4%;
+}
+
+.more{
+    margin-bottom: 10%;
+    font-size: 1.2rem;
+    /* font-weight: bold; */
+}
+.more_btn{
+    border:1px solid ;
+    border-radius: 10px;
+    background-color: #9a6b3e25;
+    padding:1.8% 3.5% 1.8% 3.5%;
+    color:white;
+  
+}
+.more_btn:hover{
+    color:white;
+    font-size: 1.3rem;
+}
+
+
+
+/*  */
+
+@media(max-width:900px){
+    body{
+        margin-top: 35%;
+    }
+    .box1, .box2{
+        border:transparent;
+        background-color: #9a6b3e25;
+        padding:1% 0 1% 0;
+    }
+    .box1{
+        margin:0 6% 0 6%;
+    }
+    .box2{
+        margin:0 6% 15% 6%;
+    }
+    .g1, .gg1{
+        width:65%;
+        padding:4% 0 4% 0;
+    }
+
+    .h2{
+        font-size: 1.2rem;
+        margin-bottom:4%;
+        margin-top:4%;
+    }
+
+    .h1{
+        font-size: 3rem;
+    }
+    .loading_img{
+        width:50%;
+        height:50%;
+    }
+    .loading{
+        font-size: 1.18rem;
+    }
+    .more{
+        margin-bottom: 20%;
+        font-size: 1rem;
+    }
+    .more_btn{
+        border:1px solid ;
+        border-radius: 10px;
+        background-color: #9a6b3e25;
+        padding:3% 6% 3% 6%;
+        color:white;
+        cursor: pointer;
+    }
+    .more_btn:hover{
+        font-size: 1.1rem;
+    }
+    .p{
+        margin-bottom: 4%;
+        font-size: 1.25rem;
+    }
+
+}
