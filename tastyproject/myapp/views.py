@@ -259,7 +259,6 @@ def main2(request):
     rmood10 =topten[10]['rmood']
     dayornight10 =topten[10]['dayornight']
 
-   
     context={"place_name":place_name, "recommend_list":recommend_list,
     'name1':name1,'category1':category1,'img1':img1,'genre1':genre1,'addr1':addr1,'phone1':phone1,'rmood1':rmood1,'dayornight1':dayornight1,
     'name2':name2,'category2':category2,'img2':img2,'genre2':genre2,'addr2':addr2,'phone2':phone2,'rmood2':rmood2,'dayornight2':dayornight2,
@@ -291,7 +290,6 @@ def end(request):
     try:
         if request.POST['ans1']=='5':
             vote.result5 +=1
-            # context['result5']=vote.result5
         elif request.POST['ans1']=='4':
             vote.result4 +=1
         elif request.POST['ans1']=='3':

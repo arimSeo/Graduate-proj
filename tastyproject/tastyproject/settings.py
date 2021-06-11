@@ -66,9 +66,9 @@ LOGGING = {
         },
     },
 }
-ADMINS = ['arimy981002@naver.com']
+# ADMINS = ['arimy981002@naver.com']
 
-DEBUG = True   #false로 고치기
+DEBUG =False   #false로 고치기 -> python manage.py runserver --insecure
 
 ALLOWED_HOSTS = ['*']
 

@@ -25,6 +25,7 @@ body{
 .box1, .box2, .box3{
     border:2px solid #ED7D31;
     border-radius: 10px;
+    width:25%;
     padding:3% 2%;
     margin:0 1% 0 1%;
     display: inline-block;
@@ -93,6 +94,7 @@ body{
     .box1, .box2, .box3{
         border:2px solid #ED7D31;
         border-radius: 10px;
+        width:90%;
         padding:10% 0%;
         margin:0 5% 6% 5%;
         display: block;
