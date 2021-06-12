@@ -77,7 +77,7 @@ body{
     background: rgba(114, 82, 39, 0.315);
     /* 아이폰 css기본값 초기화 */
     -webkit-appearance: none;   
-    -webkit-border-radius: 0;
+
 }
 .g1:hover, .gg1:hover{
     color:bisque;

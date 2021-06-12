@@ -48,8 +48,7 @@ body{
     background-color: #ED7D31;
     cursor: pointer;
     /* 아이폰 css기본값 초기화 */
-    -webkit-appearance: none;   
-    -webkit-border-radius: 0;
+    -webkit-appearance: none;
 }
 .name_btn:hover{
     color:rgb(255, 241, 231);
